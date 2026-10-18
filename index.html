@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Whitehorns Football</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Whitehorns Football, equipo de football americano de Monterrey, México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: cinematic 3D field hero → crossing marquee → white identity → chalkboard playbook → royal gallery → white schedule → black recruiting close. Deliberate single look. */
+:root{
+  --royal:#2438EB;
+  --royal-hi:#4A5CFF;
+  --navy:#080E2A;
+  --ink:#070B16;
+  --white:#FFFFFF;
+  --frost:#F5F7FC;
+  --mist:#A9B3E0;          /* secondary text on dark */
+  --slate:#4A5478;         /* secondary text on light */
+  --rule-d:rgba(255,255,255,.14);
+  --rule-l:rgba(8,14,42,.14);
+  --f-display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--ink);color:var(--white);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--royal-hi);outline-offset:3px}
+.on-royal :focus-visible{outline-color:var(--white)}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;line-height:.86;letter-spacing:-.005em;text-transform:uppercase;margin:0;text-wrap:balance}
+p{margin:0}
+
+/* buttons: square, jersey-block weight */
+.btn{display:inline-flex;align-items:center;gap:.6em;min-height:52px;padding:0 24px;font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s;background:none;color:inherit}
+.btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.btn:hover svg,.btn:focus-visible svg{transform:translateX(4px)}
+.btn:active{transform:translateY(1px)}
+.btn-royal{background:var(--royal);color:var(--white)}
+.btn-royal:hover{background:var(--royal-hi)}
+.btn-white{background:var(--white);color:var(--navy)}
+.btn-white:hover{background:var(--frost)}
+.btn-line{border-color:currentColor}
+.btn-line:hover{background:var(--white);color:var(--navy);border-color:var(--white)}
+.btn-ink{background:var(--navy);color:var(--white)}
+.btn-ink:hover{background:var(--royal)}
+
+/* logo slot: renders the original file when CONTENT.logo.src is set */
+.logo-slot{display:grid;place-items:center;background:var(--royal);flex:none;position:relative;overflow:hidden}
+.logo-slot img{width:78%;height:78%;object-fit:contain}
+.logo-slot .ph{position:absolute;inset:12%;border:1.5px dashed rgba(255,255,255,.65);display:grid;place-items:center;font-family:var(--f-mono);font-size:9px;letter-spacing:.16em;color:var(--white);text-align:center;line-height:1.3}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(8,14,42,.94);border-color:var(--rule-d)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .logo-slot{width:40px;height:40px}
+.brand .logo-slot .ph{font-size:6.5px;inset:10%}
+.brand b{font-family:var(--f-display);font-weight:900;font-size:24px;letter-spacing:.04em;line-height:1}
+.brand small{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mist);margin-top:3px}
+.nav{margin-left:auto;display:flex;gap:28px}
+.nav a{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--royal-hi);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+.hdr .btn{min-height:44px;font-size:16px;padding:0 18px}
+.burger{display:none;margin-left:auto;width:48px;height:48px;background:none;border:2px solid var(--rule-d);color:var(--white);cursor:pointer;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:currentColor;position:relative;transition:transform .3s var(--ease),background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:45;background:var(--navy);padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:max(32px,env(safe-area-inset-bottom,0px))}
+.mmenu .wrap{display:flex;flex-direction:column;gap:6px;height:100%}
+.mmenu a.ml{font-family:var(--f-display);font-weight:900;font-size:clamp(52px,15vw,84px);line-height:1;text-transform:uppercase;text-decoration:none;display:flex;align-items:baseline;gap:14px;padding:6px 0;border-bottom:1px solid var(--rule-d)}
+.mmenu a.ml span{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--mist);font-weight:500}
+.mmenu .btn{margin-top:auto;justify-content:center}
+@media (max-width:900px){.nav,.hdr .wrap>.btn{display:none}.burger{display:grid}}
+
+/* HERO: sticky 3D field */
+.hero{position:relative;height:175vh;background:var(--navy)}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:900px;perspective-origin:50% 20%;--p:0}
+.lights{position:absolute;inset:0;pointer-events:none;
+  background:
+   radial-gradient(60% 45% at 12% -8%,rgba(160,176,255,.55),transparent 60%),
+   radial-gradient(60% 45% at 88% -8%,rgba(160,176,255,.5),transparent 60%),
+   linear-gradient(180deg,var(--ink) 0%,var(--navy) 55%,#0B1440 100%)}
+.field{position:absolute;left:50%;top:44%;width:min(1500px,190vw);height:2200px;transform-origin:50% 0;
+  transform:translate3d(-50%,calc(var(--p) * -14%),0) rotateX(calc(66deg - var(--p) * 20deg)) rotateZ(calc(var(--p) * -9deg)) scale(calc(1 + var(--p) * .25));
+  background:
+   repeating-linear-gradient(180deg,rgba(255,255,255,.55) 0 3px,transparent 3px 110px),
+   repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 2px,transparent 2px 22px) 37% 0/16px 100% no-repeat,
+   repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 2px,transparent 2px 22px) 63% 0/16px 100% no-repeat,
+   linear-gradient(90deg,rgba(255,255,255,.7) 0 4px,transparent 4px calc(100% - 4px),rgba(255,255,255,.7) calc(100% - 4px)),
+   linear-gradient(180deg,#1B2BB8,var(--royal) 30%,#1A29A8 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.1);will-change:transform}
+.field::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,42,0) 0%,rgba(8,14,42,.55) 100%)}
+.yn{position:absolute;font-family:var(--f-display);font-weight:900;font-size:86px;color:rgba(255,255,255,.55);line-height:1}
+.yn.l{left:7%;transform:rotate(90deg)}.yn.r{right:7%;transform:rotate(-90deg)}
+.field svg{position:absolute;left:28%;top:120px;width:44%;height:auto;z-index:1;overflow:visible}
+.field svg path[pathLength]{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p) * 2.2)}
+.ghost{position:absolute;left:50%;top:13%;transform:translate3d(-50%,calc(var(--p) * 60px),-200px);font-family:var(--f-display);font-weight:900;font-size:clamp(120px,24vw,420px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.12);white-space:nowrap;pointer-events:none}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 + var(--p) * .08)) translateY(calc(var(--p) * -4%))}
+.hero-media-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,22,.35),rgba(7,11,22,.75))}
+.hero-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:max(48px,calc(env(safe-area-inset-bottom,0px) + 32px));
+  transform:translate3d(0,calc(var(--p) * -120px),0);opacity:calc(1 - var(--p) * 1.4)}
+.hero-copy .wrap{width:100%;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
+.hero h1{font-size:clamp(68px,13.2vw,224px);display:flex;flex-direction:column}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:block;animation:rise .9s var(--ease) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.08s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.16s;color:var(--white);-webkit-text-stroke:0}
+.hero h1 .ln:nth-child(2)>span{color:transparent;-webkit-text-stroke:2px var(--white)}
+.hero .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--mist);animation:fade .8s .1s both}
+.hero .eyebrow::before{content:"";width:36px;height:2px;background:var(--royal-hi)}
+.hero .sub{font-size:clamp(18px,1.6vw,22px);margin-top:22px;max-width:30ch;animation:fade .8s .35s both}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;animation:fade .8s .45s both}
+.hero .badge{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fade 1s .2s both}
+.hero .badge .logo-slot{width:clamp(110px,12vw,168px);aspect-ratio:1;box-shadow:0 30px 60px -20px rgba(36,56,235,.7)}
+.hero .badge .logo-slot .ph{font-size:10px}
+.hero .badge .mono{color:var(--mist);font-size:11px}
+.scrollcue{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;color:var(--mist);opacity:calc(1 - var(--p) * 3)}
+.scrollcue i{width:1px;height:44px;background:linear-gradient(var(--white),transparent);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
+.vidctl{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:calc(84px + env(safe-area-inset-top,0px));z-index:3}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:760px){
+  .hero{height:150vh}
+  .hero-copy .wrap{grid-template-columns:1fr}
+  .hero .badge{order:-1;align-items:flex-start;flex-direction:row}
+  .hero .badge .logo-slot{width:84px}
+  .hero .badge .mono{display:none}
+  .scrollcue{display:none}
+  .field{top:50%}
+  .hero .ctas .btn{flex:1 1 220px;justify-content:center}
+}
+
+/* MARQUEE */
+.cross{position:relative;background:var(--frost);height:190px;overflow:hidden;margin-top:-1px}
+.cross::before{content:"";position:absolute;inset:0 0 50%;background:var(--navy)}
+.strip{position:absolute;left:-10%;right:-10%;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:clamp(34px,5vw,64px);line-height:1;padding:16px 0;text-transform:uppercase;letter-spacing:.02em}
+.strip .track{display:inline-flex;gap:.5em;transform:translateX(var(--mx,-300px));will-change:transform}
+.strip .track span{display:inline-flex;align-items:center;gap:.5em}
+.strip .track span::after{content:"/";opacity:.45}
+.strip.a{top:38px;background:var(--royal);color:var(--white);transform:rotate(-3deg);z-index:2;box-shadow:0 20px 40px -18px rgba(8,14,42,.6)}
+.strip.b{top:70px;background:var(--white);color:var(--navy);transform:rotate(2.2deg);border-block:2px solid var(--navy)}
+.strip.b .track span:nth-child(odd){color:transparent;-webkit-text-stroke:1.5px var(--navy)}
+
+/* IDENTITY (light) */
+.light{background:var(--frost);color:var(--navy);color-scheme:light}
+.ident{padding-block:72px 120px;position:relative;overflow:hidden}
+.ident .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px 32px;position:relative}
+.ident h2{grid-column:1/-1;font-size:clamp(56px,9.5vw,152px)}
+.ident h2 span{display:block}
+.ident h2 .blue{color:var(--royal)}
+.kicker{display:flex;align-items:center;gap:12px;grid-column:1/-1;color:var(--slate);margin-bottom:6px}
+.kicker b{display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 6px;background:var(--royal);color:var(--white);font-family:var(--f-display);font-size:18px;font-weight:900;letter-spacing:0}
+.on-dark .kicker{color:var(--mist)}
+.ident .photo{grid-column:1/8;margin-top:24px}
+.ident .side{grid-column:8/-1;margin-top:24px;display:flex;flex-direction:column;gap:36px;min-width:0}
+.lead{font-size:clamp(20px,1.9vw,26px);line-height:1.4;font-weight:500;max-width:34ch}
+.facts{border-top:2px solid var(--navy)}
+.facts h3,.pillars h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;font-weight:600;padding:12px 0;line-height:1.3}
+.facts ul{list-style:none;margin:0;padding:0}
+.facts li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--rule-l);font-size:16px}
+.facts li::before{content:"";width:12px;height:12px;margin-top:6px;background:var(--royal)}
+.pillars{border-top:2px solid var(--navy)}
+.pillars h3{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pillars h3 em{font-style:normal;color:var(--royal)}
+.pillars ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.pillars li{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,4.4vw,64px);line-height:1;text-transform:uppercase;padding:10px 0;border-top:1px solid var(--rule-l);display:flex;align-items:baseline;gap:16px}
+.pillars li small{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--slate);font-weight:500}
+.vword{position:absolute;right:-.06em;top:80px;font-family:var(--f-display);font-weight:900;font-size:clamp(140px,18vw,300px);line-height:.8;writing-mode:vertical-rl;color:transparent;-webkit-text-stroke:1.5px rgba(36,56,235,.14);pointer-events:none;user-select:none}
+@media (max-width:900px){.ident .photo,.ident .side{grid-column:1/-1}.vword{display:none}}
+
+/* photo frames (real image or labelled slot) */
+.frame{position:relative;overflow:hidden;background:var(--navy);color:var(--white);aspect-ratio:4/5;max-width:100%}
+.frame img{width:100%;height:100%;object-fit:cover}
+.frame .slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px;
+  background:
+   repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 1px,transparent 1px 48px),
+   linear-gradient(90deg,transparent calc(50% - 1px),rgba(255,255,255,.1) calc(50% - 1px) calc(50% + 1px),transparent calc(50% + 1px)),
+   radial-gradient(120% 80% at 50% 0%,#14207A,var(--navy) 70%)}
+.frame .slot .big{font-family:var(--f-display);font-weight:900;font-size:clamp(44px,6vw,96px);line-height:.85;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
+.frame .slot .tag{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--mist)}
+.frame .slot .tag b{background:var(--royal);color:var(--white);padding:4px 8px;font-weight:500}
+.frame .slot .need{color:var(--mist);font-size:11px}
+
+/* 3D tilt driven by --t (1 = resting/flat). Without JS the elements sit flat. */
+.tilt-scene{perspective:1100px}
+.tilt-x{transform:rotateX(calc((1 - var(--t,1)) * 26deg)) translateY(calc((1 - var(--t,1)) * 40px));transform-origin:50% 100%;will-change:transform}
+.tilt-y{transform:rotateY(calc((1 - var(--t,1)) * -22deg)) translateZ(calc((1 - var(--t,1)) * -80px));transform-origin:0 50%;will-change:transform}
+
+/* block reveal (only applied by JS to elements below the fold) */
+.pre{opacity:0;transform:translateY(28px)}
+.rv{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+
+/* PLAYBOOK (dark) */
+.on-dark{background:var(--ink);color:var(--white)}
+.play{padding-block:110px;position:relative;overflow:hidden}
+.play::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 80px);pointer-events:none}
+.play .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px;align-items:start}
+.play h2{font-size:clamp(56px,8vw,128px)}
+.play h2 span{color:var(--royal-hi)}
+.play .intro{display:flex;flex-direction:column;gap:24px;position:sticky;top:110px}
+.play .intro p.expl{color:#D6DCF5;max-width:42ch;min-height:7.5em}
+.seg{display:inline-flex;border:2px solid var(--white);align-self:flex-start}
+.seg button{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.08em;text-transform:uppercase;background:none;color:var(--white);border:0;min-height:48px;padding:0 20px;cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--navy)}
+.seg button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.1)}
+.board-wrap{min-width:0}
+.board{background:var(--navy);border:2px solid var(--rule-d);position:relative;box-shadow:0 60px 80px -40px rgba(36,56,235,.45)}
+.board svg{display:block;width:100%;height:auto}
+.board-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--rule-d)}
+.board-bar .mono{color:var(--mist);font-size:11px}
+.replay{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;background:none;color:var(--white);border:1px solid var(--rule-d);font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s}.replay svg{width:14px;height:14px}.replay:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--mist);font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:14px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:20px;height:2px;background:var(--white)}
+.legend i.f{background:repeating-linear-gradient(90deg,var(--mist) 0 4px,transparent 4px 7px)}
+@media (max-width:900px){.play .wrap{grid-template-columns:1fr}.play .intro{position:static}.play .intro p.expl{min-height:0}}
+
+/* GALLERY (royal) */
+.on-royal{background:var(--royal);color:var(--white)}
+.comm{padding-block:110px 120px;overflow:hidden}
+.comm .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;margin-bottom:48px}
+.comm h2{font-size:clamp(56px,9vw,144px)}
+.comm .head p{max-width:36ch;font-size:18px}
+.comm .head .kicker{color:rgba(255,255,255,.8)}
+.comm .head .kicker b{background:var(--white);color:var(--royal)}
+.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.gal .frame{aspect-ratio:auto}
+.gal .g1{grid-column:1/8;grid-row:span 2;min-height:560px}
+.gal .g2{grid-column:8/-1;min-height:272px}
+.gal .g3{grid-column:8/-1;min-height:272px}
+.gal .g4{grid-column:1/-1;min-height:320px}
+.gal .frame .slot{background:
+   repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 1px,transparent 1px 48px),
+   radial-gradient(120% 90% at 30% 0%,#13207F,var(--navy) 75%)}
+.ig{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:2px solid rgba(255,255,255,.4)}
+.ig .h{font-family:var(--f-display);font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1}
+.ig small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:6px}
+@media (max-width:760px){
+  .gal .g1,.gal .g2,.gal .g3,.gal .g4{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:4/3}
+  .gal .g1{aspect-ratio:4/5}
+}
+
+/* SCHEDULE (light) */
+.sched{padding-block:110px}
+.sched .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px;align-items:start}
+.sched h2{font-size:clamp(56px,8vw,128px)}
+.sched .note{color:var(--slate);max-width:38ch;margin-top:20px}
+.scoreboard{background:var(--navy);color:var(--white);border-top:8px solid var(--royal);padding:32px;display:flex;flex-direction:column;gap:24px;min-width:0}
+.scoreboard .row{display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--mist);flex-wrap:wrap}
+.scoreboard .st{font-family:var(--f-display);font-weight:900;font-size:clamp(44px,5.5vw,80px);line-height:.9;text-transform:uppercase}
+.scoreboard .st span{color:transparent;-webkit-text-stroke:1.5px var(--white)}
+.dots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.dots div{border:1px solid var(--rule-d);padding:12px 10px;display:flex;flex-direction:column;gap:8px}
+.dots div b{font-family:var(--f-display);font-size:34px;line-height:1;font-weight:900;color:rgba(255,255,255,.25)}
+.dots div small{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--mist);text-transform:uppercase}
+.games{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.games th{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-align:left;color:var(--mist);font-weight:500;padding:8px 6px;border-bottom:1px solid var(--rule-d)}
+.games td{padding:14px 6px;border-bottom:1px solid var(--rule-d);font-size:16px}
+.archive{margin-top:28px;border-top:2px solid var(--navy)}
+.archive h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;font-weight:600;padding:12px 0}
+.archive article{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule-l)}
+.archive time{font-family:var(--f-mono);font-size:12px;color:var(--royal);letter-spacing:.06em}
+.archive .empty{color:var(--slate);font-size:15px;padding:12px 0;border-top:1px solid var(--rule-l)}
+@media (max-width:900px){.sched .wrap{grid-template-columns:1fr}.dots{grid-template-columns:repeat(2,1fr)}.scoreboard{padding:22px}}
+
+/* CONTACT */
+.contact{position:relative;padding-block:120px;background:linear-gradient(180deg,var(--ink) 0%,var(--navy) 100%);overflow:hidden}
+.contact::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--royal)}
+.contact .bg50{position:absolute;right:-2%;bottom:-6%;font-family:var(--f-display);font-weight:900;font-size:clamp(220px,34vw,560px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(74,92,255,.22);pointer-events:none;user-select:none}
+.contact .wrap{position:relative;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px 64px;align-items:start}
+.contact h2{font-size:clamp(60px,9vw,148px)}
+.contact h2 span{color:var(--royal-hi)}
+.contact .lead{color:#D6DCF5;margin-top:24px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:12px;padding:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt label{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px;border:2px solid var(--rule-d);cursor:pointer;transition:border-color .2s,background .2s}
+.opt label b{font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.opt label small{color:var(--mist);font-size:13px;line-height:1.35}
+.opt input:checked+label{border-color:var(--royal-hi);background:var(--royal)}
+.opt input:checked+label small{color:#E3E7FF}
+.opt input:focus-visible+label{outline:3px solid var(--royal-hi);outline-offset:3px}
+.opt label:hover{border-color:rgba(255,255,255,.5)}
+.form{display:flex;flex-direction:column;gap:22px;min-width:0}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld label{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+.fld input,.fld textarea{font:inherit;font-size:16px;color:var(--white);background:rgba(255,255,255,.04);border:2px solid var(--rule-d);padding:14px;width:100%;border-radius:0;transition:border-color .2s}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--royal-hi)}
+.fld textarea{min-height:150px;resize:vertical;line-height:1.5}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.status{min-height:1.5em;font-size:15px;color:#D6DCF5}
+.status.ok{color:var(--white)}
+.howto{font-size:14px;color:var(--mist);border-left:3px solid var(--royal);padding-left:12px}
+@media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+@media (max-width:480px){.opts{grid-template-columns:1fr}.acts .btn{flex:1 1 100%;justify-content:center}}
+
+/* FOOTER */
+.foot{background:var(--royal);color:var(--white);padding-block:56px max(28px,env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot .wrap{display:flex;flex-direction:column;gap:40px}
+.foot .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.foot .id{display:flex;align-items:center;gap:18px}
+.foot .id .logo-slot{width:84px;height:84px;background:var(--navy)}
+.foot .word{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,13vw,220px);line-height:.8;letter-spacing:-.01em;text-transform:uppercase}
+.foot .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;border-top:2px solid rgba(255,255,255,.45);padding-top:18px;font-size:14px}
+.foot .bottom p{max-width:60ch;opacity:.9}
+.foot a.ilink{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.04em;text-decoration:none;border-bottom:2px solid currentColor}
+.foot a.ilink:hover{border-bottom-color:transparent}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .stage{--p:0!important}
+  .hero{height:auto}
+  .stage{position:relative;height:100svh}
+  .tilt-x,.tilt-y{transform:none!important}
+  .pre{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+
+<a class="sr" href="#main">Saltar al contenido</a>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Whitehorns Football, inicio">
+      <span class="logo-slot" data-logo></span>
+      <span><b>WHITEHORNS</b><small>FOOTBALL · MTY</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#equipo">Equipo</a>
+      <a href="#juego">El juego</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-royal" href="#contacto">Quiero ser Whitehorn</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Abrir menú"><span></span></button>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu" hidden>
+  <div class="wrap">
+    <a class="ml" href="#equipo"><span>01</span>Equipo</a>
+    <a class="ml" href="#juego"><span>02</span>El juego</a>
+    <a class="ml" href="#comunidad"><span>03</span>Comunidad</a>
+    <a class="ml" href="#contacto"><span>04</span>Contacto</a>
+    <a class="btn btn-royal" href="#contacto">Quiero ser Whitehorn</a>
+  </div>
+</div>
+
+<main id="main">
+<section class="hero" id="top" aria-label="Portada">
+  <div class="stage" id="stage">
+    <div class="lights"></div>
+    <div id="heroMedia"></div>
+    <div class="ghost" aria-hidden="true">WHITEHORNS</div>
+    <div class="field" id="field" aria-hidden="true">
+      <span class="yn l" style="top:180px">10</span><span class="yn r" style="top:180px">10</span>
+      <span class="yn l" style="top:620px">20</span><span class="yn r" style="top:620px">20</span>
+      <span class="yn l" style="top:1060px">30</span><span class="yn r" style="top:1060px">30</span>
+      <span class="yn l" style="top:1500px">40</span><span class="yn r" style="top:1500px">40</span>
+      <svg viewBox="0 0 400 300" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round">
+        <g opacity=".85">
+          <circle cx="120" cy="230" r="13"/><circle cx="170" cy="230" r="13"/><circle cx="220" cy="230" r="13"/><circle cx="270" cy="230" r="13"/><circle cx="200" cy="275" r="13"/>
+          <path d="M40 228 L40 40" pathLength="1"/><path d="M350 228 L350 120 L250 40" pathLength="1"/><path d="M200 262 C200 200 300 210 320 150" pathLength="1"/>
+          <path d="M120 120 l16 16 m0 -16 l-16 16 M200 110 l16 16 m0 -16 l-16 16 M290 120 l16 16 m0 -16 l-16 16" stroke-width="3.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow mono" data-c="hero.eyebrow">Monterrey, México · Football americano</p>
+          <h1 aria-label="Hechos para el campo.">
+            <span class="ln"><span>Hechos</span></span>
+            <span class="ln"><span>para el</span></span>
+            <span class="ln"><span>campo.</span></span>
+          </h1>
+          <p class="sub" data-c="hero.sub">Dar todo. Jugar juntos. Dejar huella.</p>
+          <div class="ctas">
+            <a class="btn btn-royal" href="#contacto">Quiero ser Whitehorn <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a>
+            <a class="btn btn-line" href="#equipo">Conoce al equipo</a>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="logo-slot" data-logo></span>
+          <span class="mono">Monterrey, N.L.</span>
+        </div>
+      </div>
+    </div>
+    <div class="scrollcue mono" aria-hidden="true"><i></i>Desliza</div>
+  </div>
+</section>
+
+<div class="cross" aria-hidden="true">
+  <div class="strip b"><div class="track" data-mq="-1"></div></div>
+  <div class="strip a"><div class="track" data-mq="1"></div></div>
+</div>
+
+<section class="light ident" id="equipo" aria-labelledby="t-equipo">
+  <div class="vword" aria-hidden="true">MTY</div>
+  <div class="wrap">
+    <p class="kicker mono"><b>WH</b> El equipo</p>
+    <h2 id="t-equipo" class="rv"><span>Una ciudad.</span><span class="blue">Un equipo.</span><span>Todo en juego.</span></h2>
+    <div class="photo tilt-scene">
+      <div class="frame tilt-y" data-tilt data-photo="identity"></div>
+    </div>
+    <div class="side">
+      <p class="lead rv" data-c="identity.lead">Whitehorns es un equipo de football americano de Monterrey. Aquí se entrena, se compite y se juega por los de al lado.</p>
+      <div class="facts rv">
+        <h3>SOBRE NOSOTROS</h3>
+        <ul id="facts"></ul>
+      </div>
+      <div class="pillars rv">
+        <h3><span>LENGUAJE DE CAMPAÑA</span><em>PROPUESTA, NO LEMA OFICIAL</em></h3>
+        <ol>
+          <li>Dar todo</li>
+          <li>Jugar juntos</li>
+          <li>Dejar huella</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="on-dark play" id="juego" aria-labelledby="t-juego">
+  <div class="wrap">
+    <div class="intro">
+      <p class="kicker mono"><b>X/O</b> El juego</p>
+      <h2 id="t-juego" class="rv">Once por<br><span>lado.</span></h2>
+      <div class="seg" role="group" aria-label="Unidad">
+        <button type="button" aria-pressed="true" data-unit="off">Ofensiva</button>
+        <button type="button" aria-pressed="false" data-unit="def">Defensiva</button>
+      </div>
+      <p class="expl" id="expl" aria-live="polite"></p>
+    </div>
+    <div class="board-wrap tilt-scene">
+      <div class="board tilt-x" data-tilt>
+        <svg id="board" viewBox="0 0 800 480" role="img" aria-labelledby="boardTitle">
+          <title id="boardTitle">Pizarra con once posiciones y sus desplazamientos</title>
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fff"/></marker>
+          </defs>
+          <g id="grid"></g>
+          <g id="faint"></g>
+          <g id="routes"></g>
+          <g id="players"></g>
+        </svg>
+        <div class="board-bar">
+          <span class="mono">Diagrama ilustrativo · no representa tácticas del equipo</span>
+          <button class="replay" type="button" id="replay" aria-label="Repetir jugada">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 10a6 6 0 1 0 2-4.5M4 3v4h4"/></svg>Repetir
+          </button>
+        </div>
+      </div>
+      <div class="legend" aria-hidden="true"><span><i></i>Ruta o desplazamiento</span><span><i class="f"></i>Unidad rival</span><span>— Línea de golpeo punteada</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="on-royal comm" id="comunidad" aria-labelledby="t-comm">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="kicker mono"><b>@</b> Comunidad</p>
+        <h2 id="t-comm" class="rv">Dentro<br>del equipo</h2>
+      </div>
+      <p class="rv">Partidos, entrenamientos y los momentos que pasan entre jugada y jugada. La actividad diaria vive en su Instagram.</p>
+    </div>
+    <div class="tilt-scene">
+      <div class="gal tilt-x" data-tilt id="gal"></div>
+    </div>
+    <div class="ig">
+      <div><span class="h" data-c="team.handle">@whitehornsmx</span><small>Anuncios, fotos y convocatorias oficiales</small></div>
+      <a class="btn btn-white" data-ig target="_blank" rel="noopener">Ver Instagram <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 14 14 6M7 6h7v7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="light sched" id="partidos" aria-labelledby="t-part">
+  <div class="wrap">
+    <div>
+      <p class="kicker mono"><b>VS</b> Partidos</p>
+      <h2 id="t-part" class="rv">Temporada</h2>
+      <p class="note">Solo publicamos fechas, rivales y resultados confirmados por el equipo.</p>
+    </div>
+    <div>
+      <div class="scoreboard tilt-x" data-tilt id="board2"></div>
+      <div class="archive">
+        <h3>ARCHIVO</h3>
+        <div id="archive"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto" aria-labelledby="t-cont">
+  <div class="bg50" aria-hidden="true">50</div>
+  <div class="wrap">
+    <div>
+      <p class="kicker mono" style="color:var(--mist)"><b>GO</b> Contacto</p>
+      <h2 id="t-cont" class="rv">El siguiente paso<br><span>lo das tú.</span></h2>
+      <p class="lead rv">Elige qué buscas y armamos un mensaje para que lo envíes al equipo por Instagram.</p>
+    </div>
+    <form class="form" id="cform" novalidate>
+      <fieldset>
+        <legend>¿Qué buscas?</legend>
+        <div class="opts" id="opts"></div>
+      </fieldset>
+      <div class="fld">
+        <label for="cname">Tu nombre (opcional)</label>
+        <input id="cname" name="cname" autocomplete="name" placeholder="Nombre y apellido">
+      </div>
+      <div class="fld">
+        <label for="cmsg">Tu mensaje · puedes editarlo</label>
+        <textarea id="cmsg" name="cmsg"></textarea>
+      </div>
+      <div class="acts">
+        <button class="btn btn-royal" type="submit" id="copy">Copiar mensaje</button>
+        <a class="btn btn-line" data-ig target="_blank" rel="noopener">Abrir Instagram</a>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <p class="howto">Este sitio no envía mensajes. Copia el texto, abre @whitehornsmx y pégalo en un mensaje directo.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot on-royal">
+  <div class="wrap">
+    <div class="top">
+      <div class="id"><span class="logo-slot" data-logo></span><div><div class="mono">Football americano</div><div style="font-family:var(--f-display);font-weight:800;font-size:22px">Monterrey, México</div></div></div>
+      <a class="ilink" data-ig target="_blank" rel="noopener">@whitehornsmx</a>
+    </div>
+    <div class="word" aria-hidden="true">Whitehorns</div>
+    <div class="bottom">
+      <p>Propuesta independiente de sitio web. No es una página oficial ni ha sido aprobada por Whitehorns Football. Los textos de campaña son sugerencias.</p>
+      <span class="mono" style="font-size:11px">WHITEHORNS FOOTBALL · MTY</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   CONTENIDO EDITABLE — reemplaza aquí logo, fotos, textos y datos.
+   ================================================================ */
+const CONTENT = {
+  team: {
+    name: "Whitehorns Football",
+    handle: "@whitehornsmx",
+    instagram: "https://www.instagram.com/whitehornsmx/",
+    city: "Monterrey, México"
+  },
+  // Archivo original del emblema (SVG o PNG transparente, blanco). Vacío = espacio reservado.
+  logo: { src: "", alt: "Emblema de Whitehorns" },
+  hero: {
+    eyebrow: "Monterrey, México · Football americano",
+    sub: "Dar todo. Jugar juntos. Dejar huella.",
+    image: "",                         // foto horizontal ≥ 2400 px
+    video: null                        // { src: "clip.mp4", poster: "poster.jpg" } — solo escritorio
+  },
+  identity: {
+    lead: "Whitehorns es un equipo de football americano de Monterrey. Aquí se entrena, se compite y se juega por los de al lado.",
+    photo: { src: "", alt: "" },
+    // Solo datos verificables. Agrega categorías, sede o año cuando el equipo los confirme.
+    facts: [
+      "Equipo de football americano en Monterrey, Nuevo León.",
+      "Jugamos en la liga COEFAL.",
+      "Categorías, sede y calendario actual: por confirmar."
+    ]
+  },
+  gallery: [
+    { cat: "Partidos",           src: "", alt: "" },
+    { cat: "Entrenamientos",     src: "", alt: "" },
+    { cat: "Jugadores",          src: "", alt: "" },
+    { cat: "Momentos de equipo", src: "", alt: "" }
+  ],
+  // Formato: { date: "2026-11-08", rival: "Nombre", sede: "Lugar", result: "" }  (result vacío = próximo)
+  schedule: [],
+  // Formato: { date: "2024-05-12", title: "Texto breve de la nota" }
+  archive: [],
+  contact: {
+    options: [
+      { id: "jugar",   title: "Quiero jugar", hint: "Integrarme al equipo",
+        msg: "Hola, Whitehorns. Me interesa jugar con el equipo. ¿Me pueden compartir información sobre categorías, entrenamientos y cómo integrarme? Gracias." },
+      { id: "familia", title: "Para mi hijo o hija", hint: "Información para familias",
+        msg: "Hola, Whitehorns. Busco información para que mi hijo o hija se integre al equipo. ¿Qué categorías y edades manejan, y cómo podemos conocer un entrenamiento? Gracias." },
+      { id: "apoyar",  title: "Apoyar o patrocinar", hint: "Colaboraciones y marcas",
+        msg: "Hola, Whitehorns. Me interesa apoyar o patrocinar al equipo. ¿Con quién puedo platicar sobre opciones de colaboración? Gracias." },
+      { id: "asistir", title: "Ir a un partido", hint: "Fechas y sedes",
+        msg: "Hola, Whitehorns. Me gustaría asistir a uno de sus partidos. ¿Dónde puedo consultar las próximas fechas y sedes? Gracias." }
+    ]
+  }
+};
+
+/* ================================================================ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// text bindings
+$$("[data-c]").forEach(el => {
+  const v = el.dataset.c.split(".").reduce((o, k) => o && o[k], CONTENT);
+  if (typeof v === "string" && v) el.textContent = v;
+});
+$$("[data-ig]").forEach(a => a.href = CONTENT.team.instagram);
+
+// logo
+$$("[data-logo]").forEach(el => {
+  el.innerHTML = CONTENT.logo.src
+    ? `<img src="${esc(CONTENT.logo.src)}" alt="${esc(CONTENT.logo.alt)}">`
+    : `<span class="ph" role="img" aria-label="Espacio para el emblema original">EMBLEMA<br>ORIGINAL</span>`;
+});
+
+// frames
+function frame(el, item, label, size) {
+  if (item && item.src) {
+    el.innerHTML = `<img src="${esc(item.src)}" alt="${esc(item.alt || label)}" loading="lazy" decoding="async">`;
+  } else {
+    el.innerHTML = `<div class="slot"><div class="tag mono"><b>${esc(label)}</b><span>FOTO</span></div>
+      <div class="big" aria-hidden="true">${esc(label)}</div>
+      <div class="need mono">Espacio para foto original · ${size}</div></div>`;
+  }
+}
+frame($('[data-photo="identity"]'), CONTENT.identity.photo, "Equipo", "vertical ≥ 1600 px");
+$("#gal").innerHTML = CONTENT.gallery.map((g, i) => `<div class="frame g${i + 1}"></div>`).join("");
+$$("#gal .frame").forEach((el, i) => frame(el, CONTENT.gallery[i], CONTENT.gallery[i].cat, i === 0 ? "vertical ≥ 1600 px" : "horizontal ≥ 1600 px"));
+
+$("#facts").innerHTML = CONTENT.identity.facts.map(f => `<li>${esc(f)}</li>`).join("");
+
+// hero media (only when real material exists)
+(function () {
+  const h = CONTENT.hero, box = $("#heroMedia");
+  const wide = matchMedia("(min-width: 900px)").matches;
+  if (h.video && h.video.src && wide && !reduce) {
+    box.innerHTML = `<video class="hero-media" autoplay muted loop playsinline poster="${esc(h.video.poster || "")}"><source src="${esc(h.video.src)}"></video><div class="hero-media-shade"></div>
+      <button class="btn btn-line vidctl" type="button" aria-pressed="false">Pausar video</button>`;
+    const v = $("video", box), b = $(".vidctl", box);
+    b.onclick = () => { v.paused ? v.play() : v.pause(); b.textContent = v.paused ? "Reproducir video" : "Pausar video"; b.setAttribute("aria-pressed", v.paused); };
+  } else if (h.image || (h.video && h.video.poster)) {
+    box.innerHTML = `<img class="hero-media" src="${esc(h.image || h.video.poster)}" alt="" fetchpriority="high"><div class="hero-media-shade"></div>`;
+  }
+  if (box.innerHTML) $("#field").style.opacity = ".35";
+})();
+
+// marquee
+$$("[data-mq]").forEach(t => {
+  const words = ["Whitehorns", "Monterrey", "Football"];
+  t.innerHTML = Array.from({ length: 6 }, () => words.map(w => `<span>${w}</span>`).join("")).join("");
+});
+
+// schedule
+(function () {
+  const s = CONTENT.schedule, b = $("#board2");
+  if (s.length) {
+    b.innerHTML = `<div class="row mono"><span>Calendario</span><span>Datos confirmados</span></div>
+      <div style="overflow-x:auto"><table class="games"><thead><tr><th>FECHA</th><th>RIVAL</th><th>SEDE</th><th>RESULTADO</th></tr></thead><tbody>
+      ${s.map(g => `<tr><td>${esc(new Date(g.date + "T12:00").toLocaleDateString("es-MX", { day: "2-digit", month: "short", year: "numeric" }))}</td><td>${esc(g.rival)}</td><td>${esc(g.sede || "")}</td><td>${esc(g.result || "Próximo")}</td></tr>`).join("")}
+      </tbody></table></div>`;
+  } else {
+    b.innerHTML = `<div class="row mono"><span>Estado</span><span>Sin calendario publicado aquí</span></div>
+      <div class="st">Calendario<br><span>por confirmar</span></div>
+      <div class="dots" aria-hidden="true">
+        <div><small>Fecha</small><b>--</b></div><div><small>Rival</small><b>--</b></div>
+        <div><small>Sede</small><b>--</b></div><div><small>Marcador</small><b>--</b></div>
+      </div>
+      <p style="color:#D6DCF5;max-width:46ch">Fechas, rivales y sedes se anuncian en el Instagram del equipo.</p>
+      <div><a class="btn btn-royal" href="${esc(CONTENT.team.instagram)}" target="_blank" rel="noopener">Ver anuncios en Instagram <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 14 14 6M7 6h7v7"/></svg></a></div>`;
+  }
+  const a = CONTENT.archive;
+  $("#archive").innerHTML = a.length
+    ? a.map(n => `<article><time datetime="${esc(n.date)}">${esc(n.date)}</time><p>${esc(n.title)} <span class="mono" style="font-size:10px;color:var(--slate)">· ARCHIVO</span></p></article>`).join("")
+    : `<p class="empty">Aún no hay notas de archivo cargadas. Cada nota se mostrará con su fecha original.</p>`;
+})();
+
+/* ---------- mobile menu ---------- */
+(function () {
+  const btn = $("#burger"), menu = $("#mmenu");
+  const set = open => {
+    menu.hidden = !open; btn.setAttribute("aria-expanded", open);
+    btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    document.body.style.overflow = open ? "hidden" : "";
+    $("#hdr").classList.toggle("solid", open || scrollY > 40);
+    if (open) $("a", menu).focus();
+  };
+  btn.onclick = () => set(menu.hidden);
+  $$("a", menu).forEach(a => a.addEventListener("click", () => set(false)));
+  addEventListener("keydown", e => { if (e.key === "Escape" && !menu.hidden) { set(false); btn.focus(); } });
+  addEventListener("resize", () => { if (innerWidth > 900 && !menu.hidden) set(false); });
+})();
+
+/* ---------- playbook ---------- */
+const PLAYS = {
+  off: {
+    text: "Formación I con dos receptores abiertos. La línea ofensiva protege al quarterback mientras los receptores corren rutas a distintas profundidades: una profunda por la banda, un poste hacia el centro y una salida corta del corredor. El quarterback lee de la opción más profunda a la más corta.",
+    mark: "o",
+    players: [
+      { l: "WR", p: [[90, 326], [90, 70]] },
+      { l: "OL", p: [[300, 322], [292, 342]] },
+      { l: "OL", p: [[350, 322], [348, 340]] },
+      { l: "C",  p: [[400, 322], [400, 338]] },
+      { l: "OL", p: [[450, 322], [452, 340]] },
+      { l: "OL", p: [[500, 322], [508, 342]] },
+      { l: "TE", p: [[556, 326], [560, 240], [650, 205]] },
+      { l: "QB", p: [[400, 354], [400, 404]] },
+      { l: "FB", p: [[400, 400], [330, 388], [300, 344]] },
+      { l: "RB", p: [[400, 446], [520, 444], [610, 382]] },
+      { l: "WR", p: [[710, 330], [710, 200], [560, 92]] }
+    ]
+  },
+  def: {
+    text: "Frente 4-3 con cobertura de zona en tres tercios profundos. Cuatro linieros presionan al quarterback, tres apoyadores cubren el centro y las zonas cortas, y los dos esquineros con el safety libre protegen el pase largo.",
+    mark: "x",
+    players: [
+      { l: "CB", p: [[90, 252], [110, 92]] },
+      { l: "DE", p: [[300, 276], [318, 332]] },
+      { l: "DT", p: [[370, 276], [374, 332]] },
+      { l: "DT", p: [[430, 276], [426, 332]] },
+      { l: "DE", p: [[510, 276], [492, 332]] },
+      { l: "LB", p: [[290, 214], [220, 178]] },
+      { l: "LB", p: [[400, 204], [400, 162]] },
+      { l: "LB", p: [[512, 214], [584, 178]] },
+      { l: "FS", p: [[400, 112], [400, 66]] },
+      { l: "SS", p: [[540, 130], [650, 232]] },
+      { l: "CB", p: [[710, 252], [690, 92]] }
+    ]
+  }
+};
+(function () {
+  const svg = $("#board"), NS = "http://www.w3.org/2000/svg";
+  const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  // field grid
+  const g = $("#grid");
+  for (let y = 60; y < 480; y += 60) g.appendChild(el("line", { x1: 0, x2: 800, y1: y, y2: y, stroke: "rgba(255,255,255,.1)", "stroke-width": 1 }));
+  for (let y = 12; y < 480; y += 12) { g.appendChild(el("line", { x1: 300, x2: 310, y1: y, y2: y, stroke: "rgba(255,255,255,.12)" })); g.appendChild(el("line", { x1: 490, x2: 500, y1: y, y2: y, stroke: "rgba(255,255,255,.12)" })); }
+  g.appendChild(el("line", { x1: 0, x2: 800, y1: 300, y2: 300, stroke: "#4A5CFF", "stroke-width": 3, "stroke-dasharray": "10 8" }));
+  const los = el("text", { x: 790, y: 292, "text-anchor": "end", fill: "#A9B3E0", "font-family": "IBM Plex Mono, monospace", "font-size": 12, "letter-spacing": 2 }); los.textContent = "LÍNEA DE GOLPEO"; g.appendChild(los);
+
+  const markX = (x, y, r, stroke, sw) => { const p = el("path", { d: `M${x - r} ${y - r} L${x + r} ${y + r} M${x + r} ${y - r} L${x - r} ${y + r}`, stroke, "stroke-width": sw, "stroke-linecap": "round", fill: "none" }); return p; };
+  let unit = "off", anim = 0, played = false;
+
+  function draw(u) {
+    unit = u;
+    const play = PLAYS[u], other = PLAYS[u === "off" ? "def" : "off"];
+    $("#expl").textContent = play.text;
+    const faint = $("#faint"), routes = $("#routes"), players = $("#players");
+    faint.innerHTML = routes.innerHTML = players.innerHTML = "";
+    other.players.forEach(pl => {
+      const [x, y] = pl.p[0];
+      faint.appendChild(other.mark === "o"
+        ? el("circle", { cx: x, cy: y, r: 11, fill: "none", stroke: "rgba(169,179,224,.45)", "stroke-width": 2, "stroke-dasharray": "3 3" })
+        : markX(x, y, 9, "rgba(169,179,224,.45)", 2));
+    });
+    play.players.forEach(pl => {
+      const d = "M" + pl.p.map(q => q.join(" ")).join(" L");
+      const path = el("path", { d, fill: "none", stroke: "#fff", "stroke-width": 3, "stroke-linecap": "round", "stroke-linejoin": "round", "marker-end": "url(#ah)" });
+      routes.appendChild(path);
+      const grp = el("g", {});
+      if (play.mark === "o") {
+        grp.appendChild(el("circle", { r: 15, fill: "#2438EB", stroke: "#fff", "stroke-width": 3 }));
+      } else {
+        grp.appendChild(el("circle", { r: 16, fill: "#080E2A" }));
+        grp.appendChild(markX(0, 0, 10, "#fff", 4));
+      }
+      const t = el("text", { y: 34, "text-anchor": "middle", fill: "#fff", "font-family": "IBM Plex Mono, monospace", "font-size": 13, "font-weight": 600 });
+      t.textContent = pl.l;
+      grp.appendChild(t);
+      players.appendChild(grp);
+      pl._path = path; pl._g = grp; pl._len = path.getTotalLength();
+    });
+    render(reduce ? 1 : 0);
+  }
+  function render(k) {
+    PLAYS[unit].players.forEach(pl => {
+      const len = pl._len;
+      pl._path.style.strokeDasharray = len;
+      pl._path.style.strokeDashoffset = len * (1 - k);
+      pl._path.style.opacity = k > 0.02 ? 1 : 0;
+      const pt = pl._path.getPointAtLength(len * k);
+      pl._g.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+    });
+  }
+  function run() {
+    cancelAnimationFrame(anim);
+    if (reduce) { render(1); return; }
+    render(0);
+    const t0 = performance.now() + 250, D = 1700;
+    const step = now => {
+      const x = Math.min(Math.max((now - t0) / D, 0), 1);
+      render(1 - Math.pow(1 - x, 3));
+      if (x < 1) anim = requestAnimationFrame(step);
+    };
+    anim = requestAnimationFrame(step);
+  }
+  $$("[data-unit]").forEach(b => b.onclick = () => {
+    $$("[data-unit]").forEach(o => o.setAttribute("aria-pressed", o === b));
+    draw(b.dataset.unit); run();
+  });
+  $("#replay").onclick = run;
+  draw("off");
+  // show the finished diagram at rest, animate when it scrolls into view
+  render(1);
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !played) { played = true; run(); io.disconnect(); } }), { threshold: .45 });
+    io.observe(svg);
+  }
+})();
+
+/* ---------- contact ---------- */
+(function () {
+  const opts = CONTENT.contact.options, box = $("#opts"), msg = $("#cmsg"), name = $("#cname"), status = $("#status");
+  box.innerHTML = opts.map((o, i) => `<div class="opt"><input type="radio" name="why" id="why-${o.id}" value="${o.id}" ${i === 0 ? "checked" : ""}><label for="why-${o.id}"><b>${esc(o.title)}</b><small>${esc(o.hint)}</small></label></div>`).join("");
+  const compose = () => {
+    const o = opts.find(x => x.id === ($('input[name="why"]:checked') || {}).value) || opts[0];
+    const n = name.value.trim();
+    msg.value = n ? o.msg.replace("Hola, Whitehorns.", `Hola, Whitehorns. Soy ${n}.`) : o.msg;
+    status.textContent = ""; status.className = "status";
+  };
+  box.addEventListener("change", compose);
+  name.addEventListener("input", compose);
+  compose();
+  $("#cform").addEventListener("submit", async e => {
+    e.preventDefault();
+    const text = msg.value.trim();
+    if (!text) { status.textContent = "Escribe un mensaje antes de copiarlo."; return; }
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = "Mensaje copiado. Ábrelo en Instagram y pégalo en un mensaje directo a " + CONTENT.team.handle + ".";
+    } catch (err) {
+      msg.focus(); msg.select();
+      status.textContent = "Texto seleccionado. Cópialo con Ctrl+C o mantén presionado para copiar.";
+    }
+    status.className = "status ok";
+  });
+})();
+
+/* ---------- scroll-driven 3D ---------- */
+(function () {
+  const hdr = $("#hdr"), hero = $(".hero"), stage = $("#stage");
+  const tilts = $$("[data-tilt]"), tracks = $$("[data-mq]");
+  // block reveals: only for elements that start below the fold
+  const rvs = $$(".rv").filter(e => e.getBoundingClientRect().top > innerHeight);
+  if (!reduce && "IntersectionObserver" in window) {
+    rvs.forEach(e => e.classList.add("pre"));
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); }
+    }), { rootMargin: "0px 0px -10% 0px" });
+    rvs.forEach(e => io.observe(e));
+    setTimeout(() => rvs.forEach(e => e.classList.remove("pre")), 6000); // safety net
+  }
+  let ticking = false;
+  const clamp = v => Math.min(1, Math.max(0, v));
+  function update() {
+    ticking = false;
+    const vh = innerHeight;
+    hdr.classList.toggle("solid", scrollY > 40 || !$("#mmenu").hidden);
+    if (reduce) return;
+    const r = hero.getBoundingClientRect();
+    const p = clamp(-r.top / Math.max(1, r.height - vh));
+    stage.style.setProperty("--p", p.toFixed(4));
+    tilts.forEach(el => {
+      const b = el.getBoundingClientRect();
+      if (b.bottom < -200 || b.top > vh + 200) return;
+      el.style.setProperty("--t", clamp((vh - b.top) / (vh * .75)).toFixed(4));
+    });
+    const y = scrollY;
+    tracks.forEach(t => { const o = (y * .35) % 600; t.style.setProperty("--mx", (+t.dataset.mq > 0 ? -o : o - 600) + "px"); });
+  }
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  update();
+})();
+</script>
+
+</body>
+</html>

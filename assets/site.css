@@ -334,7 +334,7 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
 .logo-slot.has-img img{width:100%;height:100%}
 .foot .id .logo-slot.has-img{width:110px;height:84px;background:transparent}
 .frame img{transition:transform 1.2s var(--ease)}
-.ident .frame img{object-position:50% 30%}
+.ident .frame img{object-position:50% 22%}
 .ident .frame figcaption,.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 14px;background:linear-gradient(180deg,transparent,rgba(8,14,42,.85));color:var(--white);display:flex;justify-content:space-between;gap:10px}
 
 /* galería: 8 fotos */

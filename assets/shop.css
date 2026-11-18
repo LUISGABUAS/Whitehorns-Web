@@ -34,17 +34,25 @@
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes halo{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
 @keyframes ping{0%{opacity:.7;transform:translate(-50%,-50%) scale(.85)}80%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.25)}}
+/* Celular: el hero crece con su contenido (hoodie + titular + botones) en vez de forzarse a una pantalla */
 @media (max-width:760px){
-  .hero-copy .wrap{gap:4px}
-  .drop{order:-1;justify-self:center;width:min(52vw,220px);margin-bottom:-4px}
-  .drop-tag{white-space:nowrap}
-  .drop-new{right:-10%}
-  .drop-tag{margin-top:-22px;padding:8px 8px 8px 12px;gap:10px}
-  .drop-tag b{font-size:19px}
-  .drop-tag .go{width:34px;height:34px}
-  .drop-new{top:4%;right:-6%}
+  .hero{height:auto}
+  .stage{position:relative;height:auto;min-height:100svh;display:flex;flex-direction:column}
+  .hero-copy{position:relative;inset:auto;flex:1;transform:none!important;opacity:1!important;
+    padding-top:calc(76px + env(safe-area-inset-top,0px));padding-bottom:40px}
+  .hero-copy .wrap{gap:0;justify-items:stretch}
+  .ghost{top:96px}
+  .drop{order:-1;justify-self:center;width:min(68vw,280px);margin-bottom:22px}
+  .drop-fig::before{width:130%}
+  .drop-tag{margin-top:-30px;padding:10px 10px 10px 14px;gap:12px}
+  .drop-tag .mono{white-space:nowrap;font-size:10px;letter-spacing:.12em}
+  .drop-tag b{font-size:20px;white-space:nowrap}
+  .drop-tag .go{width:36px;height:36px}
+  .drop-new{top:6%;right:-4%}
+  .hero .eyebrow{font-size:10px;margin-bottom:12px}
+  .hero .sub{margin-top:16px}
+  .hero .ctas{margin-top:22px}
 }
-@media (max-width:760px) and (max-height:760px){.drop{width:min(44vw,180px)}}
 
 /* ---------- SECCIÓN TIENDA (home) ---------- */
 .shop{padding-block:110px 120px;position:relative;overflow:hidden;background:var(--navy);color:var(--white)}

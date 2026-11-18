@@ -1,6 +1,12 @@
 # Whitehorns Football — sitio web
 
-Sitio estático (un solo `index.html`, sin dependencias ni build).
+Sitio estático (sin dependencias ni build).
+
+- `index.html` — sitio principal (hero con el drop, equipo, tienda, juego, comunidad, partidos, contacto)
+- `producto.html?p=<id>` — página de venta de cada prenda
+- `assets/site.css` — estilos del sitio · `assets/shop.css` — estilos de tienda/carrito
+- `assets/shop.js` — **catálogo, precios y carrito** (edita aquí productos y precios)
+- `assets/img/` fotos del sitio · `assets/shop/` fotos de la tienda · `assets/fonts/` fuente Hitch Route
 
 ## Verlo en local
 
@@ -28,6 +34,16 @@ Todo lo editable está en el objeto `CONTENT` al inicio del `<script>` en `index
 - `contact.options` (mensajes)
 
 Coloca las imágenes en `assets/` y usa rutas relativas, por ejemplo `"assets/partido-01.jpg"`.
+
+## Tienda
+
+Productos, precios, tallas y fotos viven en `SHOP.products` dentro de `assets/shop.js`.
+El carrito se guarda en el navegador del cliente; al "Finalizar pedido" el pedido se copia y se abre el DM de Instagram (`ig.me/m/whitehornsmx`).
+Para cobrar en línea más adelante se puede conectar Stripe Payment Links o Mercado Pago sin cambiar el diseño.
+
+## Fuente de marca
+
+Los títulos usan **Hitch Route**. Coloca `HitchRoute.woff2` en `assets/fonts/`. Mientras no exista se usa Big Shoulders Display.
 
 ## Publicar en GitHub Pages
 

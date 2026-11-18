@@ -5,337 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Whitehorns Football</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Whitehorns Football, equipo de football americano de Monterrey, México.">
+<meta name="description" content="Whitehorns Football, equipo de football americano de Monterrey, México. Tienda oficial: hoodies y playeras del equipo.">
+<meta name="theme-color" content="#080E2A">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Whitehorns Football · Monterrey">
+<meta property="og:description" content="Hechos para el campo. Equipo de football americano de Monterrey. Drop 01: Hoodie Whitehorns.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/shop/hoodie-hero.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<style>
-/* Layout: cinematic 3D field hero → crossing marquee → white identity → chalkboard playbook → royal gallery → white schedule → black recruiting close. Deliberate single look. */
-:root{
-  --royal:#2438EB;
-  --royal-hi:#4A5CFF;
-  --navy:#080E2A;
-  --ink:#070B16;
-  --white:#FFFFFF;
-  --frost:#F5F7FC;
-  --mist:#A9B3E0;          /* secondary text on dark */
-  --slate:#4A5478;         /* secondary text on light */
-  --rule-d:rgba(255,255,255,.14);
-  --rule-l:rgba(8,14,42,.14);
-  --f-display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
-  --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --ease:cubic-bezier(.2,.7,.1,1);
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--ink);color:var(--white);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
-img{max-width:100%;display:block}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--royal-hi);outline-offset:3px}
-.on-royal :focus-visible{outline-color:var(--white)}
-.wrap{max-width:1320px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
-h1,h2,h3{font-family:var(--f-display);font-weight:900;line-height:.86;letter-spacing:-.005em;text-transform:uppercase;margin:0;text-wrap:balance}
-p{margin:0}
-
-/* buttons: square, jersey-block weight */
-.btn{display:inline-flex;align-items:center;gap:.6em;min-height:52px;padding:0 24px;font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s;background:none;color:inherit}
-.btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
-.btn:hover svg,.btn:focus-visible svg{transform:translateX(4px)}
-.btn:active{transform:translateY(1px)}
-.btn-royal{background:var(--royal);color:var(--white)}
-.btn-royal:hover{background:var(--royal-hi)}
-.btn-white{background:var(--white);color:var(--navy)}
-.btn-white:hover{background:var(--frost)}
-.btn-line{border-color:currentColor}
-.btn-line:hover{background:var(--white);color:var(--navy);border-color:var(--white)}
-.btn-ink{background:var(--navy);color:var(--white)}
-.btn-ink:hover{background:var(--royal)}
-
-/* logo slot: renders the original file when CONTENT.logo.src is set */
-.logo-slot{display:grid;place-items:center;background:var(--royal);flex:none;position:relative;overflow:hidden}
-.logo-slot img{width:78%;height:78%;object-fit:contain}
-.logo-slot .ph{position:absolute;inset:12%;border:1.5px dashed rgba(255,255,255,.65);display:grid;place-items:center;font-family:var(--f-mono);font-size:9px;letter-spacing:.16em;color:var(--white);text-align:center;line-height:1.3}
-
-/* HEADER */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-.hdr.solid{background:rgba(8,14,42,.94);border-color:var(--rule-d)}
-.hdr .wrap{display:flex;align-items:center;gap:24px;height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand .logo-slot{width:40px;height:40px}
-.brand .logo-slot .ph{font-size:6.5px;inset:10%}
-.brand b{font-family:var(--f-display);font-weight:900;font-size:24px;letter-spacing:.04em;line-height:1}
-.brand small{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mist);margin-top:3px}
-.nav{margin-left:auto;display:flex;gap:28px}
-.nav a{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;position:relative;padding:6px 0}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--royal-hi);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
-.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
-.hdr .btn{min-height:44px;font-size:16px;padding:0 18px}
-.burger{display:none;margin-left:auto;width:48px;height:48px;background:none;border:2px solid var(--rule-d);color:var(--white);cursor:pointer;place-items:center}
-.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:currentColor;position:relative;transition:transform .3s var(--ease),background .2s}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0}
-.burger span::before{top:-7px}.burger span::after{top:7px}
-.burger[aria-expanded="true"] span{background:transparent}
-.burger[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
-.burger[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
-.mmenu{position:fixed;inset:0;z-index:45;background:var(--navy);padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:max(32px,env(safe-area-inset-bottom,0px))}
-.mmenu .wrap{display:flex;flex-direction:column;gap:6px;height:100%}
-.mmenu a.ml{font-family:var(--f-display);font-weight:900;font-size:clamp(52px,15vw,84px);line-height:1;text-transform:uppercase;text-decoration:none;display:flex;align-items:baseline;gap:14px;padding:6px 0;border-bottom:1px solid var(--rule-d)}
-.mmenu a.ml span{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--mist);font-weight:500}
-.mmenu .btn{margin-top:auto;justify-content:center}
-@media (max-width:900px){.nav,.hdr .wrap>.btn{display:none}.burger{display:grid}}
-
-/* HERO: sticky 3D field */
-.hero{position:relative;height:175vh;background:var(--navy)}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:900px;perspective-origin:50% 20%;--p:0}
-.lights{position:absolute;inset:0;pointer-events:none;
-  background:
-   radial-gradient(60% 45% at 12% -8%,rgba(160,176,255,.55),transparent 60%),
-   radial-gradient(60% 45% at 88% -8%,rgba(160,176,255,.5),transparent 60%),
-   linear-gradient(180deg,var(--ink) 0%,var(--navy) 55%,#0B1440 100%)}
-.field{position:absolute;left:50%;top:44%;width:min(1500px,190vw);height:2200px;transform-origin:50% 0;
-  transform:translate3d(-50%,calc(var(--p) * -14%),0) rotateX(calc(66deg - var(--p) * 20deg)) rotateZ(calc(var(--p) * -9deg)) scale(calc(1 + var(--p) * .25));
-  background:
-   repeating-linear-gradient(180deg,rgba(255,255,255,.55) 0 3px,transparent 3px 110px),
-   repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 2px,transparent 2px 22px) 37% 0/16px 100% no-repeat,
-   repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 2px,transparent 2px 22px) 63% 0/16px 100% no-repeat,
-   linear-gradient(90deg,rgba(255,255,255,.7) 0 4px,transparent 4px calc(100% - 4px),rgba(255,255,255,.7) calc(100% - 4px)),
-   linear-gradient(180deg,#1B2BB8,var(--royal) 30%,#1A29A8 100%);
-  box-shadow:0 0 0 1px rgba(255,255,255,.1);will-change:transform}
-.field::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,42,0) 0%,rgba(8,14,42,.55) 100%)}
-.yn{position:absolute;font-family:var(--f-display);font-weight:900;font-size:86px;color:rgba(255,255,255,.55);line-height:1}
-.yn.l{left:7%;transform:rotate(90deg)}.yn.r{right:7%;transform:rotate(-90deg)}
-.field svg{position:absolute;left:28%;top:120px;width:44%;height:auto;z-index:1;overflow:visible}
-.field svg path[pathLength]{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p) * 2.2)}
-.ghost{position:absolute;left:50%;top:13%;transform:translate3d(-50%,calc(var(--p) * 60px),-200px);font-family:var(--f-display);font-weight:900;font-size:clamp(120px,24vw,420px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.12);white-space:nowrap;pointer-events:none}
-.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 + var(--p) * .08)) translateY(calc(var(--p) * -4%))}
-.hero-media-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,22,.35),rgba(7,11,22,.75))}
-.hero-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:max(48px,calc(env(safe-area-inset-bottom,0px) + 32px));
-  transform:translate3d(0,calc(var(--p) * -120px),0);opacity:calc(1 - var(--p) * 1.4)}
-.hero-copy .wrap{width:100%;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
-.hero h1{font-size:clamp(68px,13.2vw,224px);display:flex;flex-direction:column}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
-.hero h1 .ln>span{display:block;animation:rise .9s var(--ease) both}
-.hero h1 .ln:nth-child(2)>span{animation-delay:.08s}
-.hero h1 .ln:nth-child(3)>span{animation-delay:.16s;color:var(--white);-webkit-text-stroke:0}
-.hero h1 .ln:nth-child(2)>span{color:transparent;-webkit-text-stroke:2px var(--white)}
-.hero .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--mist);animation:fade .8s .1s both}
-.hero .eyebrow::before{content:"";width:36px;height:2px;background:var(--royal-hi)}
-.hero .sub{font-size:clamp(18px,1.6vw,22px);margin-top:22px;max-width:30ch;animation:fade .8s .35s both}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;animation:fade .8s .45s both}
-.hero .badge{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fade 1s .2s both}
-.hero .badge .logo-slot{width:clamp(110px,12vw,168px);aspect-ratio:1;box-shadow:0 30px 60px -20px rgba(36,56,235,.7)}
-.hero .badge .logo-slot .ph{font-size:10px}
-.hero .badge .mono{color:var(--mist);font-size:11px}
-.scrollcue{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;color:var(--mist);opacity:calc(1 - var(--p) * 3)}
-.scrollcue i{width:1px;height:44px;background:linear-gradient(var(--white),transparent);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
-.vidctl{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:calc(84px + env(safe-area-inset-top,0px));z-index:3}
-@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
-@media (max-width:760px){
-  .hero{height:150vh}
-  .hero-copy .wrap{grid-template-columns:1fr}
-  .hero .badge{order:-1;align-items:flex-start;flex-direction:row}
-  .hero .badge .logo-slot{width:84px}
-  .hero .badge .mono{display:none}
-  .scrollcue{display:none}
-  .field{top:50%}
-  .hero .ctas .btn{flex:1 1 220px;justify-content:center}
-}
-
-/* MARQUEE */
-.cross{position:relative;background:var(--frost);height:190px;overflow:hidden;margin-top:-1px}
-.cross::before{content:"";position:absolute;inset:0 0 50%;background:var(--navy)}
-.strip{position:absolute;left:-10%;right:-10%;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:clamp(34px,5vw,64px);line-height:1;padding:16px 0;text-transform:uppercase;letter-spacing:.02em}
-.strip .track{display:inline-flex;gap:.5em;transform:translateX(var(--mx,-300px));will-change:transform}
-.strip .track span{display:inline-flex;align-items:center;gap:.5em}
-.strip .track span::after{content:"/";opacity:.45}
-.strip.a{top:38px;background:var(--royal);color:var(--white);transform:rotate(-3deg);z-index:2;box-shadow:0 20px 40px -18px rgba(8,14,42,.6)}
-.strip.b{top:70px;background:var(--white);color:var(--navy);transform:rotate(2.2deg);border-block:2px solid var(--navy)}
-.strip.b .track span:nth-child(odd){color:transparent;-webkit-text-stroke:1.5px var(--navy)}
-
-/* IDENTITY (light) */
-.light{background:var(--frost);color:var(--navy);color-scheme:light}
-.ident{padding-block:72px 120px;position:relative;overflow:hidden}
-.ident .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px 32px;position:relative}
-.ident h2{grid-column:1/-1;font-size:clamp(56px,9.5vw,152px)}
-.ident h2 span{display:block}
-.ident h2 .blue{color:var(--royal)}
-.kicker{display:flex;align-items:center;gap:12px;grid-column:1/-1;color:var(--slate);margin-bottom:6px}
-.kicker b{display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 6px;background:var(--royal);color:var(--white);font-family:var(--f-display);font-size:18px;font-weight:900;letter-spacing:0}
-.on-dark .kicker{color:var(--mist)}
-.ident .photo{grid-column:1/8;margin-top:24px}
-.ident .side{grid-column:8/-1;margin-top:24px;display:flex;flex-direction:column;gap:36px;min-width:0}
-.lead{font-size:clamp(20px,1.9vw,26px);line-height:1.4;font-weight:500;max-width:34ch}
-.facts{border-top:2px solid var(--navy)}
-.facts h3,.pillars h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;font-weight:600;padding:12px 0;line-height:1.3}
-.facts ul{list-style:none;margin:0;padding:0}
-.facts li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--rule-l);font-size:16px}
-.facts li::before{content:"";width:12px;height:12px;margin-top:6px;background:var(--royal)}
-.pillars{border-top:2px solid var(--navy)}
-.pillars h3{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.pillars h3 em{font-style:normal;color:var(--royal)}
-.pillars ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.pillars li{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,4.4vw,64px);line-height:1;text-transform:uppercase;padding:10px 0;border-top:1px solid var(--rule-l);display:flex;align-items:baseline;gap:16px}
-.pillars li small{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--slate);font-weight:500}
-.vword{position:absolute;right:-.06em;top:80px;font-family:var(--f-display);font-weight:900;font-size:clamp(140px,18vw,300px);line-height:.8;writing-mode:vertical-rl;color:transparent;-webkit-text-stroke:1.5px rgba(36,56,235,.14);pointer-events:none;user-select:none}
-@media (max-width:900px){.ident .photo,.ident .side{grid-column:1/-1}.vword{display:none}}
-
-/* photo frames (real image or labelled slot) */
-.frame{position:relative;overflow:hidden;background:var(--navy);color:var(--white);aspect-ratio:4/5;max-width:100%}
-.frame img{width:100%;height:100%;object-fit:cover}
-.frame .slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px;
-  background:
-   repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 1px,transparent 1px 48px),
-   linear-gradient(90deg,transparent calc(50% - 1px),rgba(255,255,255,.1) calc(50% - 1px) calc(50% + 1px),transparent calc(50% + 1px)),
-   radial-gradient(120% 80% at 50% 0%,#14207A,var(--navy) 70%)}
-.frame .slot .big{font-family:var(--f-display);font-weight:900;font-size:clamp(44px,6vw,96px);line-height:.85;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
-.frame .slot .tag{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--mist)}
-.frame .slot .tag b{background:var(--royal);color:var(--white);padding:4px 8px;font-weight:500}
-.frame .slot .need{color:var(--mist);font-size:11px}
-
-/* 3D tilt driven by --t (1 = resting/flat). Without JS the elements sit flat. */
-.tilt-scene{perspective:1100px}
-.tilt-x{transform:rotateX(calc((1 - var(--t,1)) * 26deg)) translateY(calc((1 - var(--t,1)) * 40px));transform-origin:50% 100%;will-change:transform}
-.tilt-y{transform:rotateY(calc((1 - var(--t,1)) * -22deg)) translateZ(calc((1 - var(--t,1)) * -80px));transform-origin:0 50%;will-change:transform}
-
-/* block reveal (only applied by JS to elements below the fold) */
-.pre{opacity:0;transform:translateY(28px)}
-.rv{transition:opacity .8s var(--ease),transform .8s var(--ease)}
-
-/* PLAYBOOK (dark) */
-.on-dark{background:var(--ink);color:var(--white)}
-.play{padding-block:110px;position:relative;overflow:hidden}
-.play::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 80px);pointer-events:none}
-.play .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px;align-items:start}
-.play h2{font-size:clamp(56px,8vw,128px)}
-.play h2 span{color:var(--royal-hi)}
-.play .intro{display:flex;flex-direction:column;gap:24px;position:sticky;top:110px}
-.play .intro p.expl{color:#D6DCF5;max-width:42ch;min-height:7.5em}
-.seg{display:inline-flex;border:2px solid var(--white);align-self:flex-start}
-.seg button{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.08em;text-transform:uppercase;background:none;color:var(--white);border:0;min-height:48px;padding:0 20px;cursor:pointer;transition:background .25s,color .25s}
-.seg button[aria-pressed="true"]{background:var(--white);color:var(--navy)}
-.seg button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.1)}
-.board-wrap{min-width:0}
-.board{background:var(--navy);border:2px solid var(--rule-d);position:relative;box-shadow:0 60px 80px -40px rgba(36,56,235,.45)}
-.board svg{display:block;width:100%;height:auto}
-.board-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--rule-d)}
-.board-bar .mono{color:var(--mist);font-size:11px}
-.replay{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;background:none;color:var(--white);border:1px solid var(--rule-d);font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s}.replay svg{width:14px;height:14px}.replay:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
-.legend{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--mist);font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:14px}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{width:20px;height:2px;background:var(--white)}
-.legend i.f{background:repeating-linear-gradient(90deg,var(--mist) 0 4px,transparent 4px 7px)}
-@media (max-width:900px){.play .wrap{grid-template-columns:1fr}.play .intro{position:static}.play .intro p.expl{min-height:0}}
-
-/* GALLERY (royal) */
-.on-royal{background:var(--royal);color:var(--white)}
-.comm{padding-block:110px 120px;overflow:hidden}
-.comm .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;margin-bottom:48px}
-.comm h2{font-size:clamp(56px,9vw,144px)}
-.comm .head p{max-width:36ch;font-size:18px}
-.comm .head .kicker{color:rgba(255,255,255,.8)}
-.comm .head .kicker b{background:var(--white);color:var(--royal)}
-.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
-.gal .frame{aspect-ratio:auto}
-.gal .g1{grid-column:1/8;grid-row:span 2;min-height:560px}
-.gal .g2{grid-column:8/-1;min-height:272px}
-.gal .g3{grid-column:8/-1;min-height:272px}
-.gal .g4{grid-column:1/-1;min-height:320px}
-.gal .frame .slot{background:
-   repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 1px,transparent 1px 48px),
-   radial-gradient(120% 90% at 30% 0%,#13207F,var(--navy) 75%)}
-.ig{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:2px solid rgba(255,255,255,.4)}
-.ig .h{font-family:var(--f-display);font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1}
-.ig small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:6px}
-@media (max-width:760px){
-  .gal .g1,.gal .g2,.gal .g3,.gal .g4{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:4/3}
-  .gal .g1{aspect-ratio:4/5}
-}
-
-/* SCHEDULE (light) */
-.sched{padding-block:110px}
-.sched .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px;align-items:start}
-.sched h2{font-size:clamp(56px,8vw,128px)}
-.sched .note{color:var(--slate);max-width:38ch;margin-top:20px}
-.scoreboard{background:var(--navy);color:var(--white);border-top:8px solid var(--royal);padding:32px;display:flex;flex-direction:column;gap:24px;min-width:0}
-.scoreboard .row{display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--mist);flex-wrap:wrap}
-.scoreboard .st{font-family:var(--f-display);font-weight:900;font-size:clamp(44px,5.5vw,80px);line-height:.9;text-transform:uppercase}
-.scoreboard .st span{color:transparent;-webkit-text-stroke:1.5px var(--white)}
-.dots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.dots div{border:1px solid var(--rule-d);padding:12px 10px;display:flex;flex-direction:column;gap:8px}
-.dots div b{font-family:var(--f-display);font-size:34px;line-height:1;font-weight:900;color:rgba(255,255,255,.25)}
-.dots div small{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--mist);text-transform:uppercase}
-.games{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.games th{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-align:left;color:var(--mist);font-weight:500;padding:8px 6px;border-bottom:1px solid var(--rule-d)}
-.games td{padding:14px 6px;border-bottom:1px solid var(--rule-d);font-size:16px}
-.archive{margin-top:28px;border-top:2px solid var(--navy)}
-.archive h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;font-weight:600;padding:12px 0}
-.archive article{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule-l)}
-.archive time{font-family:var(--f-mono);font-size:12px;color:var(--royal);letter-spacing:.06em}
-.archive .empty{color:var(--slate);font-size:15px;padding:12px 0;border-top:1px solid var(--rule-l)}
-@media (max-width:900px){.sched .wrap{grid-template-columns:1fr}.dots{grid-template-columns:repeat(2,1fr)}.scoreboard{padding:22px}}
-
-/* CONTACT */
-.contact{position:relative;padding-block:120px;background:linear-gradient(180deg,var(--ink) 0%,var(--navy) 100%);overflow:hidden}
-.contact::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--royal)}
-.contact .bg50{position:absolute;right:-2%;bottom:-6%;font-family:var(--f-display);font-weight:900;font-size:clamp(220px,34vw,560px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(74,92,255,.22);pointer-events:none;user-select:none}
-.contact .wrap{position:relative;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px 64px;align-items:start}
-.contact h2{font-size:clamp(60px,9vw,148px)}
-.contact h2 span{color:var(--royal-hi)}
-.contact .lead{color:#D6DCF5;margin-top:24px}
-fieldset{border:0;margin:0;padding:0;min-width:0}
-legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:12px;padding:0}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.opt label{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px;border:2px solid var(--rule-d);cursor:pointer;transition:border-color .2s,background .2s}
-.opt label b{font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
-.opt label small{color:var(--mist);font-size:13px;line-height:1.35}
-.opt input:checked+label{border-color:var(--royal-hi);background:var(--royal)}
-.opt input:checked+label small{color:#E3E7FF}
-.opt input:focus-visible+label{outline:3px solid var(--royal-hi);outline-offset:3px}
-.opt label:hover{border-color:rgba(255,255,255,.5)}
-.form{display:flex;flex-direction:column;gap:22px;min-width:0}
-.fld{display:flex;flex-direction:column;gap:8px}
-.fld label{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
-.fld input,.fld textarea{font:inherit;font-size:16px;color:var(--white);background:rgba(255,255,255,.04);border:2px solid var(--rule-d);padding:14px;width:100%;border-radius:0;transition:border-color .2s}
-.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--royal-hi)}
-.fld textarea{min-height:150px;resize:vertical;line-height:1.5}
-.acts{display:flex;flex-wrap:wrap;gap:10px}
-.status{min-height:1.5em;font-size:15px;color:#D6DCF5}
-.status.ok{color:var(--white)}
-.howto{font-size:14px;color:var(--mist);border-left:3px solid var(--royal);padding-left:12px}
-@media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
-@media (max-width:480px){.opts{grid-template-columns:1fr}.acts .btn{flex:1 1 100%;justify-content:center}}
-
-/* FOOTER */
-.foot{background:var(--royal);color:var(--white);padding-block:56px max(28px,env(safe-area-inset-bottom,0px));overflow:hidden}
-.foot .wrap{display:flex;flex-direction:column;gap:40px}
-.foot .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.foot .id{display:flex;align-items:center;gap:18px}
-.foot .id .logo-slot{width:84px;height:84px;background:var(--navy)}
-.foot .word{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,13vw,220px);line-height:.8;letter-spacing:-.01em;text-transform:uppercase}
-.foot .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;border-top:2px solid rgba(255,255,255,.45);padding-top:18px;font-size:14px}
-.foot .bottom p{max-width:60ch;opacity:.9}
-.foot a.ilink{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.04em;text-decoration:none;border-bottom:2px solid currentColor}
-.foot a.ilink:hover{border-bottom-color:transparent}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .stage{--p:0!important}
-  .hero{height:auto}
-  .stage{position:relative;height:100svh}
-  .tilt-x,.tilt-y{transform:none!important}
-  .pre{opacity:1;transform:none}
-}
-</style>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/shop.css">
 </head>
 <body>
 
@@ -350,11 +34,16 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="#equipo">Equipo</a>
+      <a href="#tienda">Tienda</a>
       <a href="#juego">El juego</a>
       <a href="#comunidad">Comunidad</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="btn btn-royal" href="#contacto">Quiero ser Whitehorn</a>
+    <button class="cart-btn" type="button" data-cart-open aria-label="Abrir carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span data-cart-count hidden>0</span>
+    </button>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Abrir menú"><span></span></button>
   </div>
 </header>
@@ -362,9 +51,10 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
 <div class="mmenu" id="mmenu" hidden>
   <div class="wrap">
     <a class="ml" href="#equipo"><span>01</span>Equipo</a>
-    <a class="ml" href="#juego"><span>02</span>El juego</a>
-    <a class="ml" href="#comunidad"><span>03</span>Comunidad</a>
-    <a class="ml" href="#contacto"><span>04</span>Contacto</a>
+    <a class="ml" href="#tienda"><span>02</span>Tienda</a>
+    <a class="ml" href="#juego"><span>03</span>El juego</a>
+    <a class="ml" href="#comunidad"><span>04</span>Comunidad</a>
+    <a class="ml" href="#contacto"><span>05</span>Contacto</a>
     <a class="btn btn-royal" href="#contacto">Quiero ser Whitehorn</a>
   </div>
 </div>
@@ -403,10 +93,14 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
             <a class="btn btn-line" href="#equipo">Conoce al equipo</a>
           </div>
         </div>
-        <div class="badge">
-          <span class="logo-slot" data-logo></span>
-          <span class="mono">Monterrey, N.L.</span>
-        </div>
+        <a class="drop" href="producto.html?p=hoodie-blanca" aria-label="Hoodie Whitehorns blanca, Drop 01. Ver y comprar">
+          <span class="drop-new">NUEVO</span>
+          <span class="drop-fig"><img src="assets/shop/hoodie-hero.webp" alt="" width="606" height="780" fetchpriority="high" decoding="async"></span>
+          <span class="drop-tag">
+            <span><span class="mono">Drop 01 · <span data-drop-price></span></span><b>Hoodie Whitehorns</b></span>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg></span>
+          </span>
+        </a>
       </div>
     </div>
     <div class="scrollcue mono" aria-hidden="true"><i></i>Desliza</div>
@@ -444,6 +138,23 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
   </div>
 </section>
 
+<section class="shop" id="tienda" aria-labelledby="t-tienda">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="kicker mono" style="color:var(--mist)"><b>01</b> Tienda oficial</p>
+        <h2 id="t-tienda" class="rv">Drop<br><span>01.</span></h2>
+      </div>
+      <p class="rv">Lo que usa el equipo, ahora para la grada. Pide en línea y coordinamos pago y entrega por mensaje directo.</p>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+    <div class="shop-foot mono">
+      <ul><li>Tallas S a XXL</li><li>Entrega en Monterrey</li><li>Pedido por mensaje directo</li></ul>
+      <button class="btn btn-line" type="button" data-cart-open>Ver carrito</button>
+    </div>
+  </div>
+</section>
+
 <section class="on-dark play" id="juego" aria-labelledby="t-juego">
   <div class="wrap">
     <div class="intro">
@@ -454,6 +165,11 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
         <button type="button" aria-pressed="false" data-unit="def">Defensiva</button>
       </div>
       <p class="expl" id="expl" aria-live="polite"></p>
+      <div class="play-photo" aria-hidden="true">
+        <img data-u="off" src="assets/img/ofensiva.jpg" alt="" loading="lazy" decoding="async">
+        <img data-u="def" class="off" src="assets/img/defensiva.jpg" alt="" loading="lazy" decoding="async">
+        <span class="mono" id="playTag">Ofensiva · en el campo</span>
+      </div>
     </div>
     <div class="board-wrap tilt-scene">
       <div class="board tilt-x" data-tilt>
@@ -507,6 +223,13 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
     </div>
     <div>
       <div class="scoreboard tilt-x" data-tilt id="board2"></div>
+      <div class="lineups">
+        <h3><span>ALINEACIONES · THE XI</span><em>VS. UAAAN LAGUNA</em></h3>
+        <div class="two">
+          <button class="poster" type="button" data-lb="xi" data-i="0"><img src="assets/img/xi-ofensiva.jpg" alt="Alineación ofensiva de Whitehorns contra UAAAN Laguna" loading="lazy"><span>Ofensiva</span></button>
+          <button class="poster" type="button" data-lb="xi" data-i="1"><img src="assets/img/xi-defensa.jpg" alt="Alineación defensiva de Whitehorns contra UAAAN Laguna" loading="lazy"><span>Defensa</span></button>
+        </div>
+      </div>
       <div class="archive">
         <h3>ARCHIVO</h3>
         <div id="archive"></div>
@@ -522,6 +245,7 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
       <p class="kicker mono" style="color:var(--mist)"><b>GO</b> Contacto</p>
       <h2 id="t-cont" class="rv">El siguiente paso<br><span>lo das tú.</span></h2>
       <p class="lead rv">Elige qué buscas y armamos un mensaje para que lo envíes al equipo por Instagram.</p>
+      <div class="cphoto"><img src="assets/img/estudio.jpg" alt="Jugadores de Whitehorns con el uniforme royal" loading="lazy" decoding="async"></div>
     </div>
     <form class="form" id="cform" novalidate>
       <fieldset>
@@ -555,12 +279,23 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
     </div>
     <div class="word" aria-hidden="true">Whitehorns</div>
     <div class="bottom">
-      <p>Propuesta independiente de sitio web. No es una página oficial ni ha sido aprobada por Whitehorns Football. Los textos de campaña son sugerencias.</p>
+      <p>© 2026 Whitehorns Football · Monterrey, Nuevo León. Pedidos de la tienda por mensaje directo en Instagram.</p>
       <span class="mono" style="font-size:11px">WHITEHORNS FOOTBALL · MTY</span>
     </div>
   </div>
 </footer>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de fotos" hidden>
+  <div class="lb-top"><span class="mono" id="lbCap"></span>
+    <button type="button" id="lbClose" aria-label="Cerrar"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 5l10 10M15 5 5 15"/></svg></button></div>
+  <div class="lb-fig"><img id="lbImg" alt=""></div>
+  <div class="lb-nav">
+    <button type="button" id="lbPrev" aria-label="Foto anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M17 10H4M9 4l-6 6 6 6"/></svg></button>
+    <button type="button" id="lbNext" aria-label="Foto siguiente"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg></button>
+  </div>
+</div>
+
+<script src="assets/shop.js"></script>
 <script>
 /* ================================================================
    CONTENIDO EDITABLE — reemplaza aquí logo, fotos, textos y datos.
@@ -573,7 +308,7 @@ const CONTENT = {
     city: "Monterrey, México"
   },
   // Archivo original del emblema (SVG o PNG transparente, blanco). Vacío = espacio reservado.
-  logo: { src: "", alt: "Emblema de Whitehorns" },
+  logo: { src: "assets/img/logo-white.png", alt: "Emblema de Whitehorns" },
   hero: {
     eyebrow: "Monterrey, México · Football americano",
     sub: "Dar todo. Jugar juntos. Dejar huella.",
@@ -582,19 +317,24 @@ const CONTENT = {
   },
   identity: {
     lead: "Whitehorns es un equipo de football americano de Monterrey. Aquí se entrena, se compite y se juega por los de al lado.",
-    photo: { src: "", alt: "" },
+    photo: { src: "assets/img/identidad.jpg", alt: "Jugador de Whitehorns con pintura de guerra y el emblema en el pecho" },
     // Solo datos verificables. Agrega categorías, sede o año cuando el equipo los confirme.
     facts: [
       "Equipo de football americano en Monterrey, Nuevo León.",
       "Jugamos en la liga COEFAL.",
+      "Último partido publicado: vs. UAAAN Laguna.",
       "Categorías, sede y calendario actual: por confirmar."
     ]
   },
   gallery: [
-    { cat: "Partidos",           src: "", alt: "" },
-    { cat: "Entrenamientos",     src: "", alt: "" },
-    { cat: "Jugadores",          src: "", alt: "" },
-    { cat: "Momentos de equipo", src: "", alt: "" }
+    { cat: "Partido",        src: "assets/img/gal-partido.jpg",    alt: "Jugador número 7 de Nuevo León de espaldas en la banda" },
+    { cat: "Antes del kickoff", src: "assets/img/gal-casco.jpg",   alt: "Jugador ajustándose el casco antes del partido" },
+    { cat: "Nuevo León",     src: "assets/img/gal-nuevoleon.jpg",  alt: "Jugadores con jersey de Nuevo León en la banda" },
+    { cat: "Línea",          src: "assets/img/gal-linea.jpg",      alt: "Dos linieros, números 64 y 75, posando en el campo" },
+    { cat: "La familia",     src: "assets/img/gal-equipo.jpg",     alt: "Grupo de jugadores Whitehorns al atardecer en el campo" },
+    { cat: "Mirada",         src: "assets/img/gal-mirada.jpg",     alt: "Jugador número 7 con pintura de guerra" },
+    { cat: "Staff",          src: "assets/img/gal-staff.jpg",      alt: "Coaches revisando la hoja de jugadas con un jugador" },
+    { cat: "Banca",          src: "assets/img/gal-banca.jpg",      alt: "Jugadores celebrando en el campo" }
   ],
   // Formato: { date: "2026-11-08", rival: "Nombre", sede: "Lugar", result: "" }  (result vacío = próximo)
   schedule: [],
@@ -629,6 +369,7 @@ $$("[data-ig]").forEach(a => a.href = CONTENT.team.instagram);
 
 // logo
 $$("[data-logo]").forEach(el => {
+  if (CONTENT.logo.src) el.classList.add("has-img");
   el.innerHTML = CONTENT.logo.src
     ? `<img src="${esc(CONTENT.logo.src)}" alt="${esc(CONTENT.logo.alt)}">`
     : `<span class="ph" role="img" aria-label="Espacio para el emblema original">EMBLEMA<br>ORIGINAL</span>`;
@@ -637,7 +378,7 @@ $$("[data-logo]").forEach(el => {
 // frames
 function frame(el, item, label, size) {
   if (item && item.src) {
-    el.innerHTML = `<img src="${esc(item.src)}" alt="${esc(item.alt || label)}" loading="lazy" decoding="async">`;
+    el.innerHTML = `<img src="${esc(item.src)}" alt="${esc(item.alt || label)}" loading="lazy" decoding="async"><figcaption class="mono"><span>${esc(label)}</span><span>WH</span></figcaption>`;
   } else {
     el.innerHTML = `<div class="slot"><div class="tag mono"><b>${esc(label)}</b><span>FOTO</span></div>
       <div class="big" aria-hidden="true">${esc(label)}</div>
@@ -645,10 +386,45 @@ function frame(el, item, label, size) {
   }
 }
 frame($('[data-photo="identity"]'), CONTENT.identity.photo, "Equipo", "vertical ≥ 1600 px");
-$("#gal").innerHTML = CONTENT.gallery.map((g, i) => `<div class="frame g${i + 1}"></div>`).join("");
+$("#gal").innerHTML = CONTENT.gallery.map((g, i) => `<button type="button" class="frame g${i + 1}" data-lb="gal" data-i="${i}" aria-label="Ampliar foto: ${esc(g.cat)}"></button>`).join("");
 $$("#gal .frame").forEach((el, i) => frame(el, CONTENT.gallery[i], CONTENT.gallery[i].cat, i === 0 ? "vertical ≥ 1600 px" : "horizontal ≥ 1600 px"));
 
 $("#facts").innerHTML = CONTENT.identity.facts.map(f => `<li>${esc(f)}</li>`).join("");
+
+/* ---------- tienda en home ---------- */
+(function () {
+  const P = WHCart.products, card = (p, cls, flag) => `
+    <a class="pcard ${cls}" href="producto.html?p=${p.id}">
+      ${flag ? `<span class="flag">${esc(flag)}</span>` : ""}
+      <span class="pimg"><img src="${esc(p.images[0].src)}" alt="${esc(p.images[0].alt)}" loading="lazy" decoding="async"></span>
+      <span class="pinfo"><span><small>${esc(p.variant)}</small><b>${esc(p.name)}</b></span><span class="pp">${WHCart.money(p.price)}</span></span>
+    </a>`;
+  const hero = { ...P[0], variant: "Blanca y royal", images: [{ src: "assets/shop/hoodies-trio.jpg", alt: "Hoodies Whitehorns blanca y royal" }] };
+  $("#shopGrid").innerHTML = card(hero, "big", "Drop 01 · Nuevo") +
+    `<div class="shop-side">${card(P[1], "", "Royal")}${card(P[2], "", "Personalízala")}</div>`;
+  $$("[data-drop-price]").forEach(e => e.textContent = WHCart.money(P[0].price));
+})();
+
+/* ---------- visor de fotos ---------- */
+(function () {
+  const lb = $("#lb"), img = $("#lbImg"), cap = $("#lbCap");
+  const sets = {
+    gal: CONTENT.gallery.map(g => ({ src: g.src, alt: g.alt, cap: g.cat })),
+    xi: [{ src: "assets/img/xi-ofensiva.jpg", alt: "Alineación ofensiva", cap: "The XI · Ofensiva" }, { src: "assets/img/xi-defensa.jpg", alt: "Alineación defensiva", cap: "The XI · Defensa" }]
+  };
+  let set = [], i = 0, last = null;
+  const show = () => { const it = set[i]; img.src = it.src; img.alt = it.alt; cap.textContent = `${it.cap} · ${i + 1}/${set.length}`; };
+  const open = (k, n) => { last = document.activeElement; set = sets[k]; i = n; show(); lb.hidden = false; document.documentElement.style.overflow = "hidden"; $("#lbClose").focus(); };
+  const close = () => { lb.hidden = true; document.documentElement.style.overflow = ""; if (last) last.focus(); };
+  const go = d => { i = (i + d + set.length) % set.length; show(); };
+  document.addEventListener("click", e => { const b = e.target.closest("[data-lb]"); if (b) open(b.dataset.lb, +b.dataset.i); });
+  $("#lbClose").onclick = close; $("#lbPrev").onclick = () => go(-1); $("#lbNext").onclick = () => go(1);
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-fig")) close(); });
+  addEventListener("keydown", e => { if (lb.hidden) return; if (e.key === "Escape") close(); if (e.key === "ArrowRight") go(1); if (e.key === "ArrowLeft") go(-1); });
+  let x0 = null; const fig = $(".lb-fig");
+  fig.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+  fig.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); x0 = null; });
+})();
 
 // hero media (only when real material exists)
 (function () {
@@ -817,6 +593,8 @@ const PLAYS = {
   $$("[data-unit]").forEach(b => b.onclick = () => {
     $$("[data-unit]").forEach(o => o.setAttribute("aria-pressed", o === b));
     draw(b.dataset.unit); run();
+    $$(".play-photo img").forEach(im => im.classList.toggle("off", im.dataset.u !== b.dataset.unit));
+    $("#playTag").textContent = b.dataset.unit === "off" ? "Ofensiva · en el campo" : "Defensiva · en el campo";
   });
   $("#replay").onclick = run;
   draw("off");

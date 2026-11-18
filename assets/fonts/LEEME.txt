@@ -1,0 +1,3 @@
+Coloca aquí el archivo de la fuente Hitch Route con el nombre HitchRoute.woff2
+(si solo tienes .otf/.ttf, conviértelo a .woff2 o renómbralo y ajusta la ruta en assets/site.css).
+Verifica que tu licencia permita usarla en web.

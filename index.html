@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=9">
-<link rel="stylesheet" href="assets/shop.css?v=9">
+<link rel="stylesheet" href="assets/site.css?v=12">
+<link rel="stylesheet" href="assets/shop.css?v=12">
 </head>
 <body>
 
@@ -221,9 +221,6 @@
       <p class="kicker mono"><b>VS</b> Partidos</p>
       <h2 id="t-part" class="rv">Temporada</h2>
       <p class="note">Solo publicamos fechas, rivales y resultados confirmados por el equipo.</p>
-    </div>
-    <div>
-      <div class="scoreboard tilt-x" data-tilt id="board2"></div>
       <div class="lineups">
         <h3><span>ALINEACIONES · THE XI</span><em>VS. UAAAN LAGUNA</em></h3>
         <div class="two">
@@ -231,6 +228,18 @@
           <button class="poster" type="button" data-lb="xi" data-i="1"><img src="assets/img/xi-defensa.jpg" alt="Alineación defensiva de Whitehorns contra UAAAN Laguna" loading="lazy"><span>Defensa</span></button>
         </div>
       </div>
+      <a class="gameday" href="producto.html?p=playera-est-2024">
+        <span class="gd-img"><img src="assets/shop/playera-est-2024.jpg" alt="Playera navy Whitehorns Football Est. 2024" loading="lazy" decoding="async"></span>
+        <span class="gd-txt">
+          <span class="mono">Día de partido</span>
+          <b>Vístete para el partido</b>
+          <span class="gd-p">Playera Est. 2024 · <span data-price="playera-est-2024"></span></span>
+          <span class="btn btn-royal">Comprar <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+    </div>
+    <div>
+      <div class="scoreboard tilt-x" data-tilt id="board2"></div>
       <div class="archive">
         <h3>ARCHIVO</h3>
         <div id="archive"></div>
@@ -296,7 +305,7 @@
   </div>
 </div>
 
-<script src="assets/shop.js?v=9"></script>
+<script src="assets/shop.js?v=12"></script>
 <script>
 /* ================================================================
    CONTENIDO EDITABLE — reemplaza aquí logo, fotos, textos y datos.
@@ -416,6 +425,7 @@ $("#facts").innerHTML = CONTENT.identity.facts.map(f => `<li>${esc(f)}</li>`).jo
     ["playera-est-2024", "Clásica"], ["tank-royal", "Entrenamiento"], ["gorra", "Nuevo"], ["manga-larga", "Personalízala"]
   ].map(([id, f]) => card(byId(id), "", f)).join("");
   $$("[data-drop-price]").forEach(e => e.textContent = WHCart.money(P[0].price));
+  $$("[data-price]").forEach(e => { const x = byId(e.dataset.price); if (x) e.textContent = WHCart.money(x.price); });
 })();
 
 /* ---------- visor de fotos ---------- */

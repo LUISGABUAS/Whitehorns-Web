@@ -393,3 +393,27 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
 .contact .cphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .contact .cphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,61,237,.0) 40%,rgba(8,14,42,.65))}
 @media (max-width:900px){.contact .cphoto{display:none}}
+
+/* temporada: columna izquierda con alineaciones + tarjeta de merch */
+.sched .lineups{margin-top:36px}
+.gameday{display:grid;grid-template-columns:150px minmax(0,1fr);margin-top:28px;background:var(--navy);color:var(--white);text-decoration:none;overflow:hidden;border-top:6px solid var(--royal);transition:transform .35s var(--ease)}
+.gameday:hover{transform:translateY(-3px)}
+.gd-img{position:relative;overflow:hidden;background:#3a4a2a}
+.gd-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gameday:hover .gd-img img{transform:scale(1.06)}
+.gd-txt{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px}
+.gd-txt .mono{color:var(--mist);font-size:11px}
+.gd-txt b{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,2.6vw,38px);line-height:.9;text-transform:uppercase}
+.gd-p{color:#D6DCF5;font-size:15px}
+.gd-txt .btn{margin-top:6px;min-height:44px;font-size:16px;padding:0 16px}
+@media (max-width:420px){.gameday{grid-template-columns:118px minmax(0,1fr)}.gd-txt{padding:16px}}
+@media (min-width:901px){.sched .wrap>div:last-child{position:sticky;top:96px}}
+@media (max-width:900px){
+  .sched .wrap>div{display:contents}
+  .sched .wrap{row-gap:0}
+  .sched .scoreboard{margin-top:32px}
+  .sched .scoreboard{order:2}
+  .sched .lineups{order:3}
+  .sched .gameday{order:4}
+  .sched .archive{order:5}
+}

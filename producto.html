@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=5">
-<link rel="stylesheet" href="assets/shop.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=8">
+<link rel="stylesheet" href="assets/shop.css?v=8">
 </head>
 <body>
 <a class="sr" href="#buy">Saltar al producto</a>
@@ -126,7 +126,7 @@
   </div>
 </footer>
 
-<script src="assets/shop.js?v=5"></script>
+<script src="assets/shop.js?v=8"></script>
 <script>
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
@@ -163,7 +163,9 @@
     cur = (i + imgs.length) % imgs.length;
     const m = imgs[cur];
     main.src = m.src; main.alt = m.alt; main.classList.toggle("cut", !!m.cut);
-    $(".wm").style.display = m.cut ? "" : "none";
+    main.classList.toggle("contain", m.fit === "contain");
+    $("#stagep").classList.toggle("studio", m.fit === "contain");
+    $(".wm").style.display = (m.cut || m.fit === "contain") ? "" : "none";
     document.querySelectorAll("#thumbs button").forEach((b, k) => b.setAttribute("aria-current", k === cur));
     document.querySelectorAll("#dotsp i").forEach((d, k) => d.classList.toggle("on", k === cur));
   }

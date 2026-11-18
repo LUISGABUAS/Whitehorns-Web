@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=5">
-<link rel="stylesheet" href="assets/shop.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=8">
+<link rel="stylesheet" href="assets/shop.css?v=8">
 </head>
 <body>
 
@@ -147,6 +147,7 @@
       </div>
       <p class="rv">Lo que usa el equipo, ahora para la grada. Pide en línea y coordinamos pago y entrega por mensaje directo.</p>
     </div>
+    <div id="shopBanner"></div>
     <div class="shop-grid" id="shopGrid"></div>
     <div class="shop-foot mono">
       <ul><li>Tallas S a XXL</li><li>Entrega en Monterrey</li><li>Pedido por mensaje directo</li></ul>
@@ -295,7 +296,7 @@
   </div>
 </div>
 
-<script src="assets/shop.js?v=5"></script>
+<script src="assets/shop.js?v=8"></script>
 <script>
 /* ================================================================
    CONTENIDO EDITABLE — reemplaza aquí logo, fotos, textos y datos.
@@ -396,12 +397,19 @@ $("#facts").innerHTML = CONTENT.identity.facts.map(f => `<li>${esc(f)}</li>`).jo
   const P = WHCart.products, card = (p, cls, flag) => `
     <a class="pcard ${cls}" href="producto.html?p=${p.id}">
       ${flag ? `<span class="flag">${esc(flag)}</span>` : ""}
-      <span class="pimg"><img src="${esc(p.images[0].src)}" alt="${esc(p.images[0].alt)}" loading="lazy" decoding="async"></span>
+      <span class="pimg r45"><img src="${esc(p.images[0].src)}" alt="${esc(p.images[0].alt)}" loading="lazy" decoding="async"></span>
       <span class="pinfo"><span><small>${esc(p.variant)}</small><b>${esc(p.name)}</b></span><span class="pp">${WHCart.money(p.price)}</span></span>
     </a>`;
-  const hero = { ...P[0], variant: "Blanca y royal", images: [{ src: "assets/shop/hoodies-trio.jpg", alt: "Hoodies Whitehorns blanca y royal" }] };
-  $("#shopGrid").innerHTML = card(hero, "big", "Drop 01 · Nuevo") +
-    `<div class="shop-side">${card(P[1], "", "Royal")}${card(P[2], "", "Personalízala")}</div>`;
+  $("#shopBanner").innerHTML = `
+    <a class="pcard banner" href="producto.html?p=hoodie-blanca">
+      <span class="flag">Drop 01 · Nuevo</span>
+      <span class="pimg"><img src="assets/shop/hoodies-trio.jpg" alt="Tres jugadores con hoodies Whitehorns blanca y royal" loading="lazy" decoding="async"></span>
+      <span class="bside">
+        <span><span class="mono" style="color:var(--mist)">Blanca y royal</span><b>Hoodie<br>Whitehorns</b><p>La hoodie oficial del drop 01, en los dos colores del equipo.</p></span>
+        <span class="bfoot"><span class="sw" aria-hidden="true"><i style="background:#fff"></i><i style="background:#0A3DED"></i></span><span class="pp">${WHCart.money(P[0].price)}</span><span class="btn btn-white">Comprar ${'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg>'}</span></span>
+      </span>
+    </a>`;
+  $("#shopGrid").innerHTML = card(P[0], "", "Blanca") + card(P[1], "", "Royal") + card(P[2], "", "Personalízala");
   $$("[data-drop-price]").forEach(e => e.textContent = WHCart.money(P[0].price));
 })();
 

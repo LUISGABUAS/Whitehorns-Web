@@ -19,7 +19,7 @@ const SHOP = {
       cutout: "assets/shop/hoodie-hero.webp",
       images: [
         { src: "assets/shop/hoodie-blanca-1.jpg", alt: "Hoodie Whitehorns blanca con emblema azul al frente" },
-        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal" },
+        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" },
         { src: "assets/shop/hoodies-equipo.jpg", alt: "El equipo usando hoodies Whitehorns en el campo" }
       ],
       sizes: ["S", "M", "L", "XL", "XXL"],
@@ -35,7 +35,7 @@ const SHOP = {
       tag: "Drop 01",
       images: [
         { src: "assets/shop/hoodie-royal-1.jpg", alt: "Hoodie Whitehorns royal con emblema blanco" },
-        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal" },
+        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" },
         { src: "assets/shop/hoodies-equipo.jpg", alt: "El equipo usando hoodies Whitehorns en el campo" }
       ],
       sizes: ["S", "M", "L", "XL", "XXL"],

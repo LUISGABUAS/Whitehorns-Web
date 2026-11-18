@@ -46,14 +46,18 @@
 }
 
 /* ---------- SECCIÓN TIENDA (home) ---------- */
-.shop{padding-block:110px 120px;position:relative;overflow:hidden;background:var(--navy);color:var(--white)}
+.shop{padding-block:110px 120px;position:relative;overflow:hidden;color:var(--white);background:linear-gradient(180deg,rgba(8,14,42,.86),rgba(8,14,42,.97) 55%),url(shop/textura-jersey.jpg) center 30%/cover var(--navy)}
 .shop::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 80% 0%,rgba(36,56,235,.55),transparent 70%);pointer-events:none}
 .shop .wrap{position:relative}
 .shop .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;margin-bottom:44px}
 .shop h2{font-size:clamp(56px,9vw,144px)}
 .shop h2 span{color:transparent;-webkit-text-stroke:2px var(--white)}
 .shop .head p{max-width:38ch;color:#D6DCF5;font-size:18px}
-.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.shop-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dots-c{display:flex;gap:5px;margin-top:8px}.dots-c i{width:12px;height:12px;border:1px solid rgba(255,255,255,.5)}
+.pcard .pinfo{align-items:flex-end}
+.shop-grid .pinfo b{font-size:clamp(20px,1.8vw,26px)}
+.shop-grid .pinfo .pp{font-size:18px}
 .pcard .pimg.r45{flex:none;aspect-ratio:4/5;min-height:0}
 .pcard .pimg.r45 img{object-position:50% 18%}
 .pcard.banner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);margin-bottom:16px}
@@ -79,8 +83,9 @@
 .shop-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 24px}
 .shop-foot li{display:flex;align-items:center;gap:8px}
 .shop-foot li::before{content:"";width:8px;height:8px;background:var(--royal-hi)}
+@media (max-width:1100px) and (min-width:901px){.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){
-  .shop-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;
+  .shop-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:64%;overflow-x:auto;scroll-snap-type:x mandatory;
     margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px));padding-bottom:6px;scrollbar-width:none}
   .shop-grid::-webkit-scrollbar{display:none}
   .shop-grid .pcard{scroll-snap-align:start}
@@ -186,7 +191,8 @@
 .howbuy b{font-family:var(--f-display);font-weight:900;font-size:22px;text-transform:uppercase}
 .more{margin-top:96px}
 .more h2{font-size:clamp(44px,6vw,88px);margin-bottom:28px}
-.more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.more-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .more-grid .pcard{background:var(--navy)}
 .more-grid .pcard .pimg{aspect-ratio:4/5;min-height:0;flex:none}
 .more-grid .pcard .pimg img{object-position:50% 20%}

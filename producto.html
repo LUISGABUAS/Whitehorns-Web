@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=8">
-<link rel="stylesheet" href="assets/shop.css?v=8">
+<link rel="stylesheet" href="assets/site.css?v=9">
+<link rel="stylesheet" href="assets/shop.css?v=9">
 </head>
 <body>
 <a class="sr" href="#buy">Saltar al producto</a>
@@ -126,7 +126,7 @@
   </div>
 </footer>
 
-<script src="assets/shop.js?v=8"></script>
+<script src="assets/shop.js?v=9"></script>
 <script>
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
@@ -186,6 +186,7 @@
     document.querySelectorAll("#sizes button").forEach(x => x.setAttribute("aria-pressed", x === b));
     $("#sizes").classList.remove("err"); $("#sizeMsg").textContent = "";
   });
+  if (p.sizes.length === 1) document.querySelector("#sizes button").click();
   const setQ = v => { qty = Math.max(1, Math.min(20, v)); $("#qVal").textContent = qty; };
   $("#qMinus").onclick = () => setQ(qty - 1);
   $("#qPlus").onclick = () => setQ(qty + 1);
@@ -219,7 +220,8 @@
   }
 
   // otros productos
-  $("#more").innerHTML = WHCart.products.filter(x => x.id !== p.id).map(x => `
+  const seen = new Set([p.name]);
+  $("#more").innerHTML = WHCart.products.filter(x => !seen.has(x.name) && seen.add(x.name)).slice(0, 4).map(x => `
     <a class="pcard" href="producto.html?p=${x.id}">
       <span class="pimg"><img src="${esc(x.images[0].src)}" alt="${esc(x.images[0].alt)}" loading="lazy"></span>
       <span class="pinfo"><span><small>${esc(x.variant)}</small><b>${esc(x.name)}</b></span><span class="pp">${WHCart.money(x.price)}</span></span>

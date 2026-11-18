@@ -227,9 +227,9 @@ p{margin:0}
 
 /* GALLERY (royal) */
 .on-royal{background:var(--royal);color:var(--white)}
-.comm{padding-block:110px 120px;overflow:hidden}
-.comm .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;margin-bottom:48px}
-.comm h2{font-size:clamp(56px,9vw,144px)}
+.comm{padding-block:80px 100px;overflow:hidden}
+.comm .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:32px}
+.comm h2{font-size:clamp(52px,7vw,112px)}
 .comm .head p{max-width:36ch;font-size:18px}
 .comm .head .kicker{color:rgba(255,255,255,.8)}
 .comm .head .kicker b{background:var(--white);color:var(--royal)}

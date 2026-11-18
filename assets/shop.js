@@ -18,13 +18,14 @@ const SHOP = {
       tag: "Drop 01",
       cutout: "assets/shop/hoodie-hero.webp",
       images: [
-        { src: "assets/shop/hoodie-blanca-1.jpg", alt: "Hoodie Whitehorns blanca con emblema azul al frente" },
-        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" },
-        { src: "assets/shop/hoodies-equipo.jpg", alt: "El equipo usando hoodies Whitehorns en el campo" }
+        { src: "assets/shop/hoodie-blanca-modelo.jpg", alt: "Modelo con la hoodie Whitehorns blanca sentado en el estudio" },
+        { src: "assets/shop/hoodie-blanca-producto.jpg", alt: "Hoodie Whitehorns blanca con emblema royal y W en la manga" },
+        { src: "assets/shop/hoodie-blanca-modelo-2.jpg", alt: "Modelo con la capucha puesta de la hoodie Whitehorns blanca" },
+        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" }
       ],
       sizes: ["S", "M", "L", "XL", "XXL"],
       desc: "La hoodie oficial del drop 01. Blanca, con el emblema Whitehorns en royal al frente y la W en la manga. Para el entrenamiento, la grada y la calle.",
-      details: ["Emblema Whitehorns al frente", "W en la manga izquierda", "Capucha con cordones", "Bolsa canguro"]
+      details: ["Emblema Whitehorns al frente", "W en la manga", "Capucha con cordones", "Bolsa canguro"]
     },
     {
       id: "hoodie-royal",
@@ -34,13 +35,98 @@ const SHOP = {
       price: 899,
       tag: "Drop 01",
       images: [
-        { src: "assets/shop/hoodie-royal-1.jpg", alt: "Hoodie Whitehorns royal con emblema blanco" },
-        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" },
-        { src: "assets/shop/hoodies-equipo.jpg", alt: "El equipo usando hoodies Whitehorns en el campo" }
+        { src: "assets/shop/hoodie-royal-modelo.jpg", alt: "Modelo con la hoodie Whitehorns royal sentado en un banco" },
+        { src: "assets/shop/hoodie-royal-producto.jpg", alt: "Hoodie Whitehorns royal con emblema blanco y W en la manga" },
+        { src: "assets/shop/hoodie-royal-espalda.jpg", alt: "Hoodie Whitehorns royal vista de espalda con la W en la manga" },
+        { src: "assets/shop/hoodies-trio.jpg", alt: "Tres jugadores con hoodies Whitehorns blanca y royal", fit: "contain" }
       ],
       sizes: ["S", "M", "L", "XL", "XXL"],
-      desc: "El color del equipo. Hoodie royal con el emblema Whitehorns en blanco al frente.",
-      details: ["Emblema Whitehorns al frente", "Capucha con cordones", "Bolsa canguro"]
+      desc: "El color del equipo. Hoodie royal con el emblema Whitehorns en blanco al frente y la W en la manga.",
+      details: ["Emblema Whitehorns al frente", "W en la manga", "Capucha con cordones", "Bolsa canguro"]
+    },
+    {
+      id: "playera-emblema-royal",
+      name: "Playera Emblema",
+      variant: "Royal",
+      swatch: "#0A3DED",
+      price: 449,
+      tag: "Nuevo",
+      images: [{ src: "assets/shop/playera-emblema-royal.jpg", alt: "Playera royal con el emblema Whitehorns en blanco" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Manga corta con el emblema Whitehorns al frente. La básica del equipo.",
+      details: ["Emblema Whitehorns al frente", "Manga corta", "Cuello redondo"]
+    },
+    {
+      id: "playera-emblema-blanca",
+      name: "Playera Emblema",
+      variant: "Blanca",
+      swatch: "#FFFFFF",
+      price: 449,
+      tag: "Nuevo",
+      images: [{ src: "assets/shop/playera-emblema-blanca.jpg", alt: "Playera blanca con el emblema Whitehorns en royal" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Manga corta con el emblema Whitehorns al frente. La básica del equipo.",
+      details: ["Emblema Whitehorns al frente", "Manga corta", "Cuello redondo"]
+    },
+    {
+      id: "playera-emblema-negra",
+      name: "Playera Emblema",
+      variant: "Negra",
+      swatch: "#111111",
+      price: 449,
+      tag: "Nuevo",
+      images: [{ src: "assets/shop/playera-emblema-negra.jpg", alt: "Playera negra con el emblema Whitehorns en blanco" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Manga corta con el emblema Whitehorns al frente. La básica del equipo.",
+      details: ["Emblema Whitehorns al frente", "Manga corta", "Cuello redondo"]
+    },
+    {
+      id: "playera-whitehorns",
+      name: "Playera Whitehorns",
+      variant: "Negra",
+      swatch: "#111111",
+      price: 449,
+      tag: "Nuevo",
+      images: [{ src: "assets/shop/playera-whitehorns-negra.jpg", alt: "Playera negra con el emblema y la palabra WHITEHORNS" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Negra, con el emblema y el nombre del equipo al frente.",
+      details: ["Emblema y WHITEHORNS al frente", "Manga corta", "Cuello redondo"]
+    },
+    {
+      id: "playera-est-2024",
+      name: "Playera Est. 2024",
+      variant: "Navy",
+      swatch: "#1B2440",
+      price: 449,
+      tag: "Clásica",
+      images: [{ src: "assets/shop/playera-est-2024.jpg", alt: "Playera navy Whitehorns Football Est. 2024 sobre el pasto" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Estilo varsity: Whitehorns Football, Est. 2024, con el emblema y el casco.",
+      details: ["Whitehorns Football · Est. 2024 al frente", "Manga corta", "Cuello redondo"]
+    },
+    {
+      id: "tank-royal",
+      name: "Tank Whitehorns",
+      variant: "Royal",
+      swatch: "#0A3DED",
+      price: 399,
+      tag: "Entrenamiento",
+      images: [{ src: "assets/shop/tank-royal.jpg", alt: "Playera sin mangas royal con el emblema Whitehorns" }],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      desc: "Sin mangas, para el entrenamiento y el gimnasio. Emblema Whitehorns al frente.",
+      details: ["Emblema Whitehorns al frente", "Sin mangas"]
+    },
+    {
+      id: "gorra",
+      name: "Gorra Whitehorns",
+      variant: "Gris",
+      swatch: "#8D9096",
+      price: 399,
+      tag: "Nuevo",
+      images: [{ src: "assets/shop/gorra-gris.jpg", alt: "Gorra gris con el emblema Whitehorns en royal, frente y espalda" }],
+      sizes: ["Unitalla"],
+      desc: "Gorra gris con el emblema bordado en royal al frente y el logo Whitehorns atrás.",
+      details: ["Emblema royal al frente", "Logo Whitehorns atrás", "Ajuste trasero"]
     },
     {
       id: "manga-larga",

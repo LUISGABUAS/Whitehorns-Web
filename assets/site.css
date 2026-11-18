@@ -407,7 +407,8 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
 .gd-p{color:#D6DCF5;font-size:15px}
 .gd-txt .btn{margin-top:6px;min-height:44px;font-size:16px;padding:0 16px}
 @media (max-width:420px){.gameday{grid-template-columns:118px minmax(0,1fr)}.gd-txt{padding:16px}}
-@media (min-width:901px){.sched .wrap>div:last-child{position:sticky;top:96px}}
+.sched .scoreboard+.gameday{margin-top:16px}
+.sched .lineups{margin-top:28px}
 @media (max-width:900px){
   .sched .wrap>div{display:contents}
   .sched .wrap{row-gap:0}
@@ -417,3 +418,4 @@ legend{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transf
   .sched .gameday{order:4}
   .sched .archive{order:5}
 }
+@media (min-width:901px){.sched .gameday{grid-template-columns:32% minmax(0,1fr)}}

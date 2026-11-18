@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=12">
-<link rel="stylesheet" href="assets/shop.css?v=12">
+<link rel="stylesheet" href="assets/site.css?v=14">
+<link rel="stylesheet" href="assets/shop.css?v=14">
 </head>
 <body>
 
@@ -228,6 +228,9 @@
           <button class="poster" type="button" data-lb="xi" data-i="1"><img src="assets/img/xi-defensa.jpg" alt="Alineación defensiva de Whitehorns contra UAAAN Laguna" loading="lazy"><span>Defensa</span></button>
         </div>
       </div>
+    </div>
+    <div>
+      <div class="scoreboard" id="board2"></div>
       <a class="gameday" href="producto.html?p=playera-est-2024">
         <span class="gd-img"><img src="assets/shop/playera-est-2024.jpg" alt="Playera navy Whitehorns Football Est. 2024" loading="lazy" decoding="async"></span>
         <span class="gd-txt">
@@ -237,9 +240,6 @@
           <span class="btn btn-royal">Comprar <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 10h13M11 4l6 6-6 6"/></svg></span>
         </span>
       </a>
-    </div>
-    <div>
-      <div class="scoreboard tilt-x" data-tilt id="board2"></div>
       <div class="archive">
         <h3>ARCHIVO</h3>
         <div id="archive"></div>
@@ -305,7 +305,7 @@
   </div>
 </div>
 
-<script src="assets/shop.js?v=12"></script>
+<script src="assets/shop.js?v=14"></script>
 <script>
 /* ================================================================
    CONTENIDO EDITABLE — reemplaza aquí logo, fotos, textos y datos.
@@ -489,6 +489,7 @@ $$("[data-mq]").forEach(t => {
       <div><a class="btn btn-royal" href="${esc(CONTENT.team.instagram)}" target="_blank" rel="noopener">Ver anuncios en Instagram <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 14 14 6M7 6h7v7"/></svg></a></div>`;
   }
   const a = CONTENT.archive;
+  $(".archive").hidden = !a.length;
   $("#archive").innerHTML = a.length
     ? a.map(n => `<article><time datetime="${esc(n.date)}">${esc(n.date)}</time><p>${esc(n.title)} <span class="mono" style="font-size:10px;color:var(--slate)">· ARCHIVO</span></p></article>`).join("")
     : `<p class="empty">Aún no hay notas de archivo cargadas. Cada nota se mostrará con su fecha original.</p>`;
